@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-import hero from "@/assets/hero-color.jpg";
 import studio from "@/assets/studio-color.jpg";
+import { SplitHero } from "@/components/SplitHero";
 import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
@@ -22,39 +22,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="relative h-[92dvh] min-h-[560px] w-full overflow-hidden">
-        <Image
-          src={hero}
-          alt="Kenet Mimarlık tarafından tasarlanan lüks iç mekân, deniz manzaralı yaşam alanı"
-          fill
-          priority
-          sizes="100vw"
-          className="absolute inset-0 object-cover"
-        />
-        <div className="scrim absolute inset-0" />
-        <div className="relative mx-auto flex h-full max-w-[1600px] flex-col justify-end px-6 pb-16 text-primary-foreground md:px-10 md:pb-24">
-          <p className="eyebrow fade-up max-w-xs text-primary-foreground/70 md:max-w-none">
-            Bandırma, Balıkesir · İç Mimari Stüdyosu
-          </p>
-          <h1 className="fade-up mt-6 max-w-4xl font-display text-5xl leading-[1.05] font-light md:text-8xl">
-            Sessiz iç mekânlar,
-            <br />
-            özgün detaylar.
-          </h1>
-          <div className="fade-up mt-10 flex flex-wrap items-center gap-6">
-            <Link
-              href="/projeler"
-              className="group inline-flex min-h-12 items-center gap-3 border border-primary-foreground/40 px-8 py-4 eyebrow backdrop-blur-[2px] transition-colors hover:bg-primary-foreground hover:text-primary"
-            >
-              Projeleri Gör
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <span className="max-w-xs text-sm text-primary-foreground/80">
-              2009’dan bu yana 120’den fazla tamamlanmış iç mekân projesi.
-            </span>
-          </div>
-        </div>
-      </section>
+      <SplitHero />
 
       <section className="mx-auto max-w-[1600px] px-6 py-24 md:px-10 md:py-36">
         <div className="grid gap-12 md:grid-cols-[1fr_1.4fr]">

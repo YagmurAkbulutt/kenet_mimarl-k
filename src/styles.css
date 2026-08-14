@@ -235,6 +235,93 @@
   );
 }
 
+.split-hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  height: 100vh;
+  height: 100svh;
+}
+
+@supports (height: 100dvh) {
+  .split-hero {
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+}
+
+.split-hero-panel {
+  width: 100%;
+  z-index: 1;
+  transition: clip-path 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.split-hero-panel-left {
+  clip-path: inset(0 50% 0 0);
+  transform-origin: left center;
+}
+
+.split-hero-panel-right {
+  clip-path: inset(0 0 0 50%);
+  transform-origin: right center;
+}
+
+.split-hero-panel-right {
+  border-left: 1px solid oklch(1 0 0 / 0.24);
+}
+
+.split-hero-image {
+  width: 100vw !important;
+  max-width: none !important;
+  filter: grayscale(1) contrast(1.08);
+  transform: scale(1.01);
+  transition:
+    transform 2200ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.split-hero-panel-left .split-hero-image {
+  right: auto !important;
+  left: 0 !important;
+  transform-origin: left center;
+}
+
+.split-hero-panel-right .split-hero-image {
+  right: 0 !important;
+  left: auto !important;
+  transform-origin: right center;
+}
+
+.split-hero-scrim {
+  background:
+    linear-gradient(to top, oklch(0.14 0 0 / 0.76), oklch(0.14 0 0 / 0.2) 52%),
+    linear-gradient(to right, oklch(0.14 0 0 / 0.2), oklch(0.14 0 0 / 0.08));
+  transition: background 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.split-hero[data-active="left"] .split-hero-panel-left,
+.split-hero[data-active="right"] .split-hero-panel-right {
+  clip-path: inset(0 0 0 0);
+  z-index: 20;
+}
+
+.split-hero[data-closing="left"] .split-hero-panel-left,
+.split-hero[data-closing="right"] .split-hero-panel-right {
+  z-index: 10;
+}
+
+.split-hero[data-active="left"] .split-hero-panel-left .split-hero-image,
+.split-hero[data-active="right"] .split-hero-panel-right .split-hero-image {
+  filter: grayscale(1) contrast(1.16);
+  transform: scale(1.025);
+}
+
+.split-hero[data-active="left"] .split-hero-panel-left .split-hero-scrim,
+.split-hero[data-active="right"] .split-hero-panel-right .split-hero-scrim {
+  background:
+    linear-gradient(to top, oklch(0.14 0 0 / 0.68), oklch(0.14 0 0 / 0.12) 58%),
+    linear-gradient(to right, oklch(0.14 0 0 / 0.18), oklch(0.14 0 0 / 0.04));
+}
+
 @utility fade-up {
   animation: fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }

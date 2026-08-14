@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@300;400;500;600&display=swap"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <a
           href="#icerik"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"

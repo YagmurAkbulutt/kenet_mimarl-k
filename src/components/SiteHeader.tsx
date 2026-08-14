@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -52,11 +53,21 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto grid max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 md:px-10 md:py-5">
-        <Link href="/" className="min-w-0" aria-label="Kenet Mimarlık — ana sayfa">
-          <span className="font-display text-2xl tracking-[0.2em] uppercase">Kenet</span>
-          <span className={`ml-2 eyebrow ${transparent ? "opacity-70" : "text-muted-foreground"}`}>
-            Mimarlık
-          </span>
+        <Link
+          href="/"
+          className="relative block h-9 w-[130px] min-w-0 md:h-11 md:w-[158px]"
+          aria-label="Kenet Mimarlık — ana sayfa"
+        >
+          <Image
+            src="/logo.png"
+            alt="Kenet Mimarlık"
+            fill
+            priority
+            sizes="(min-width: 768px) 158px, 130px"
+            className={`object-contain object-left transition duration-500 ${
+              transparent ? "brightness-0 invert" : "brightness-0"
+            }`}
+          />
         </Link>
 
         <nav className="hidden shrink-0 items-center gap-8 md:flex">
