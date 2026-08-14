@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
 import "../styles.css";
 
@@ -13,6 +14,11 @@ export const metadata: Metadata = {
   },
   description: "Bandırma, Balıkesir merkezli modern mimarlık stüdyosu.",
   authors: [{ name: "Kenet Mimarlık" }],
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
     title: "Kenet Mimarlık",
     description: "Bandırma, Balıkesir merkezli modern mimarlık stüdyosu.",
@@ -51,6 +57,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           {children}
         </main>
         <SiteFooter />
+        <WhatsAppButton />
         <Toaster />
       </body>
     </html>

@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 const nav = [
   { to: "/", label: "Ana Sayfa" },
   { to: "/projeler", label: "Projeler" },
-  { to: "/studyo", label: "Stüdyo" },
+  { to: "/studyo", label: "Hakkımızda" },
   { to: "/hizmetler", label: "Hizmetler" },
   { to: "/iletisim", label: "İletişim" },
 ] as const;
@@ -49,7 +49,7 @@ export function SiteHeader() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         transparent
           ? "header-scrim text-primary-foreground"
-          : "border-b border-border bg-background/85 text-foreground backdrop-blur-xl"
+          : "bg-background/90 text-foreground backdrop-blur-xl"
       }`}
     >
       <div className="mx-auto grid max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 md:px-10 md:py-5">
