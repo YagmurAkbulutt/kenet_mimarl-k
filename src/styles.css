@@ -326,6 +326,10 @@
   animation: fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@utility fade-down {
+  animation: fade-down 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Bağlantılar için ince, premium bir altı çizili hover davranışı */
 @utility link-underline {
   position: relative;
@@ -389,5 +393,16 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
