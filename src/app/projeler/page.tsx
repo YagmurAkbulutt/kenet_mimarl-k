@@ -5,7 +5,7 @@ import { projects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Projeler — Kenet Mimarlık",
   description:
-    "Kenet Mimarlık'ın konut, ofis, otel, kültür ve iç mimari projelerinden oluşan seçki.",
+    "Kenet Mimarlık'ın konut, ofis, kültür ve iç mimari projelerinden oluşan seçki.",
   openGraph: {
     title: "Projeler — Kenet Mimarlık",
     description: "Konut, ofis, otel ve kültür yapılarından seçilmiş mimari projeler.",
@@ -19,7 +19,7 @@ export default function ProjectsPage() {
       <h1 className="mt-6 font-display text-5xl font-light md:text-8xl">Projeler</h1>
 
       <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
-        Konut, otel, ofis ve ticari mekânlarda tamamlanmış iç mimari işlerimizden bir seçki.
+        Konut, ofis ve ticari mekânlarda tamamlanmış iç mimari işlerimizden bir seçki.
       </p>
 
       <ProjectsFilter projects={projects} />

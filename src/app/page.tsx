@@ -9,11 +9,11 @@ import { projects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Kenet Mimarlık — İç Mimari ve İç Mekân Tasarımı",
   description:
-    "Kenet Mimarlık; konut, otel, ofis ve ticari alanlarda ışık, malzeme ve oran üzerine kurulu premium iç mimari projeler üretir.",
+    "Kenet Mimarlık; konut, ofis ve ticari alanlarda ışık, malzeme ve oran üzerine kurulu premium iç mimari projeler üretir.",
   openGraph: {
     title: "Kenet Mimarlık — İç Mimari ve İç Mekân Tasarımı",
     description:
-      "Konut, otel, ofis ve ticari alanlarda sakin ve premium bir iç mekân tasarım pratiği.",
+      "Konut, ofis ve ticari alanlarda sakin ve premium bir iç mekân tasarım pratiği.",
   },
 };
 
@@ -73,7 +73,6 @@ export default function HomePage() {
                   <h3 className="font-display text-2xl font-light transition-opacity group-hover:opacity-60 md:text-3xl">
                     {p.title}
                   </h3>
-                  <span className="shrink-0 eyebrow text-muted-foreground">{p.year}</span>
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {p.category} · {p.location}

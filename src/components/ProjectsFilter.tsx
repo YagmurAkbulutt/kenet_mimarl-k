@@ -60,7 +60,6 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
               <h2 className="font-display text-2xl font-light transition-opacity group-hover:opacity-60 md:text-3xl">
                 {p.title}
               </h2>
-              <span className="shrink-0 eyebrow text-muted-foreground">{p.year}</span>
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
               {p.category} · {p.location}

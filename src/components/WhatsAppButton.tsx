@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 export function WhatsAppButton() {
   const [footerVisible, setFooterVisible] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
+
   const message = encodeURIComponent(
     "Merhaba, Kenet Mimarlık ile proje veya randevu hakkında görüşmek istiyorum.",
   );
@@ -24,6 +26,18 @@ export function WhatsAppButton() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const checkModal = () => {
+      setModalActive(document.body.getAttribute("data-lightbox-active") === "true");
+    };
+
+    checkModal();
+    const observer = new MutationObserver(checkModal);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["data-lightbox-active"] });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <a
       href={`https://wa.me/905362063063?text=${message}`}
@@ -32,7 +46,7 @@ export function WhatsAppButton() {
       aria-label="WhatsApp ile iletişime geçin"
       className={`fixed right-5 z-50 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_12px_30px_oklch(0.14_0_0_/_0.18)] transition-all duration-500 hover:scale-105 focus-visible:scale-105 md:right-7 md:h-14 md:w-14 ${
         footerVisible ? "bottom-24 md:bottom-28" : "bottom-5 md:bottom-7"
-      }`}
+      } ${modalActive ? "pointer-events-none opacity-0 scale-75 invisible" : "opacity-100 scale-100"}`}
     >
       <svg viewBox="0 0 32 32" aria-hidden="true" className="h-6 w-6 md:h-7 md:w-7" fill="none">
         <path

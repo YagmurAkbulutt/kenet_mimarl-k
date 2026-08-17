@@ -64,9 +64,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             <ArrowLeft className="h-4 w-4" /> Projeler
           </Link>
           <h1 className="mt-6 font-display text-5xl font-light md:text-8xl">{project.title}</h1>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/85">
-            {project.summary}
-          </p>
         </div>
       </div>
 
@@ -76,9 +73,6 @@ export default async function ProjectDetailPage({ params }: PageProps) {
             {[
               ["Kategori", project.category],
               ["Konum", project.location],
-              ["Yıl", project.year],
-              ["Alan", project.area],
-              ["İşveren", project.client],
               ["Durum", project.status],
             ].map(([k, v]) => (
               <div key={k} className="flex justify-between gap-4 border-b border-border pb-4">
