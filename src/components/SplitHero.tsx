@@ -111,7 +111,6 @@ export function SplitHero() {
               href={getLink("/hizmetler")}
               onMouseEnter={() => activate("left")}
               onMouseLeave={scheduleReset}
-              onFocus={() => activate("left")}
               className="split-hero-trigger-left split-hero-nav-title pointer-events-auto justify-self-end pr-4 font-display text-sm font-light tracking-[0.14em] uppercase outline-none md:pr-5 md:text-xl md:tracking-[0.22em]"
             >
               {t("hero_ruhsat")}
@@ -121,7 +120,6 @@ export function SplitHero() {
               href={getLink("/hizmetler")}
               onMouseEnter={() => activate("right")}
               onMouseLeave={scheduleReset}
-              onFocus={() => activate("right")}
               className="split-hero-trigger-right split-hero-nav-title pointer-events-auto justify-self-start pl-4 font-display text-sm font-light tracking-[0.14em] uppercase outline-none md:pl-5 md:text-xl md:tracking-[0.22em]"
             >
               {t("hero_tasarim")}

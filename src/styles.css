@@ -252,15 +252,19 @@
 .split-hero-panel {
   width: 100%;
   z-index: 1;
-  transition: clip-path 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    clip-path 1800ms cubic-bezier(0.22, 1, 0.36, 1),
+    -webkit-clip-path 1800ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .split-hero-panel-left {
+  -webkit-clip-path: inset(0 50% 0 0);
   clip-path: inset(0 50% 0 0);
   transform-origin: left center;
 }
 
 .split-hero-panel-right {
+  -webkit-clip-path: inset(0 0 0 50%);
   clip-path: inset(0 0 0 50%);
   transform-origin: right center;
 }
@@ -300,6 +304,7 @@
 
 .split-hero[data-active="left"] .split-hero-panel-left,
 .split-hero[data-active="right"] .split-hero-panel-right {
+  -webkit-clip-path: inset(0 0 0 0);
   clip-path: inset(0 0 0 0);
   z-index: 20;
 }
