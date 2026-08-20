@@ -12,8 +12,7 @@ export const metadata: Metadata = {
     "Kenet Mimarlık; konut, ofis ve ticari alanlarda ışık, malzeme ve oran üzerine kurulu premium iç mimari projeler üretir.",
   openGraph: {
     title: "Kenet Mimarlık — İç Mimari ve İç Mekân Tasarımı",
-    description:
-      "Konut, ofis ve ticari alanlarda sakin ve premium bir iç mekân tasarım pratiği.",
+    description: "Konut, ofis ve ticari alanlarda sakin ve premium bir iç mekân tasarım pratiği.",
   },
 };
 
@@ -28,8 +27,8 @@ export default function HomePage() {
         <div className="grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-center">
           <p className="eyebrow text-muted-foreground">Yaklaşım</p>
           <h2 className="max-w-4xl font-display text-3xl leading-tight font-light md:text-4xl">
-            Her projeye kullanıcının günlük ritmini dinleyerek başlarız. Işık, doku ve ölçek; iç
-            mekânın tek süsüdür.
+            Her projeye kullanıcının yaşam ritmini dinleyerek başlarız. Işık, doku ve ölçeği;
+            zamansız ve karakter sahibi yaşam alanları oluşturmak için kurgularız.
           </h2>
           <Link
             href="/studyo"

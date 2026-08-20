@@ -78,7 +78,9 @@ export default function ServicesPage() {
               />
             </div>
             <h2 className="mt-5 font-display text-2xl font-light md:text-3xl">{fs.title}</h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">{fs.text}</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+              {fs.text}
+            </p>
           </div>
         ))}
       </div>
@@ -88,7 +90,10 @@ export default function ServicesPage() {
         <p className="eyebrow text-muted-foreground mb-10">Tüm Disiplinler</p>
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
-            <div key={s.title} className="border-l border-border/35 pl-6 transition-colors duration-300 hover:border-foreground">
+            <div
+              key={s.title}
+              className="border-l border-border/35 pl-6 transition-colors duration-300 hover:border-foreground"
+            >
               <h3 className="font-display text-2xl font-light md:text-3xl">{s.title}</h3>
               <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
             </div>
@@ -101,7 +106,10 @@ export default function ServicesPage() {
         <h2 className="font-display text-4xl font-light md:text-5xl">Süreç</h2>
         <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(([n, t, d]) => (
-            <div key={n} className="border-t border-border/25 pt-5 transition-colors duration-300 hover:border-foreground">
+            <div
+              key={n}
+              className="border-t border-border/25 pt-5 transition-colors duration-300 hover:border-foreground"
+            >
               <div className="flex items-center gap-3">
                 <span className="eyebrow text-muted-foreground text-xs">{n}</span>
                 <div className="h-[1px] flex-1 bg-border/25" />

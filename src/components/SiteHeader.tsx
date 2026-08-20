@@ -142,9 +142,7 @@ export function SiteHeader() {
                       }`}
                     >
                       <span>{item.label}</span>
-                      {active && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-                      )}
+                      {active && <span className="h-1.5 w-1.5 rounded-full bg-foreground" />}
                     </Link>
                   );
                 })}

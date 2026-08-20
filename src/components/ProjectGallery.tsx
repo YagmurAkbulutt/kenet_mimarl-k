@@ -126,7 +126,7 @@ export function ProjectGallery({ project }: { project: Project }) {
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               />
-              
+
               {/* Category Badge on top left */}
               {g.room && (
                 <div className="absolute top-4 left-4 z-10 bg-background/85 px-3 py-1 text-[10px] uppercase tracking-widest text-foreground backdrop-blur-md border border-border/50">
