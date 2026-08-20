@@ -176,7 +176,7 @@ export function SiteHeader() {
             className="w-full bg-background text-foreground md:hidden border-t border-border/30"
           >
             <nav className="flex flex-col px-6 pt-2 pb-6">
-              <div className="flex flex-col">
+              <div className="flex flex-col py-2">
                 {nav.map((item, i) => {
                   const href = getLink(item.to);
                   const active = isActive(pathname, href);
@@ -186,27 +186,27 @@ export function SiteHeader() {
                       href={href}
                       onClick={() => setOpen(false)}
                       style={{ animationDelay: `${i * 35}ms` }}
-                      className={`fade-down flex items-center justify-between py-3.5 border-b border-border/40 font-display text-xl font-normal tracking-wide transition-colors ${
+                      className={`fade-down flex items-center justify-between py-3.5 border-b border-border/30 font-display text-xl tracking-wide transition-colors ${
                         active
-                          ? "text-foreground font-medium pl-2 border-foreground/40 bg-muted/40"
-                          : "text-foreground/85 hover:text-foreground hover:pl-1"
+                          ? "text-foreground font-semibold"
+                          : "text-foreground/75 hover:text-foreground"
                       }`}
                     >
                       <span>{item.label}</span>
-                      {active && <span className="h-1.5 w-1.5 rounded-full bg-foreground" />}
+                      {active && <span className="h-2 w-2 rounded-full bg-foreground" />}
                     </Link>
                   );
                 })}
               </div>
 
-              <div className="pt-4 flex items-center justify-between">
+              <div className="mt-2 pt-4 flex items-center justify-between border-t border-border/40 px-2">
                 <div className="inline-flex items-center gap-0.5 rounded-full border border-border p-0.5 text-xs uppercase font-medium">
                   <button
                     type="button"
                     onClick={() => setLanguage("tr")}
                     className={`rounded-full px-3 py-1 transition-all ${
                       language === "tr"
-                        ? "bg-foreground text-background font-semibold"
+                        ? "bg-foreground text-background font-semibold shadow-xs"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
@@ -217,7 +217,7 @@ export function SiteHeader() {
                     onClick={() => setLanguage("en")}
                     className={`rounded-full px-3 py-1 transition-all ${
                       language === "en"
-                        ? "bg-foreground text-background font-semibold"
+                        ? "bg-foreground text-background font-semibold shadow-xs"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >

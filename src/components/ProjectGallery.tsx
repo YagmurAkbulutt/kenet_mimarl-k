@@ -157,9 +157,9 @@ export function ProjectGallery({ project }: { project: Project }) {
                 </div>
               )}
 
-              <div className="scrim absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" />
               <div className="absolute inset-x-0 bottom-0 flex translate-y-2 items-end justify-end p-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-                <span className="eyebrow text-primary-foreground/80">{label}</span>
+                <span className="eyebrow text-white drop-shadow-sm">{label}</span>
               </div>
             </button>
           );
@@ -205,9 +205,11 @@ function Lightbox({
   // Preload next and prev images for 0ms instant transition
   const total = images.length;
   const nextIdx = (active + 1) % total;
+  const next2Idx = (active + 2) % total;
   const prevIdx = (active - 1 + total) % total;
-  const nextImage = images[nextIdx];
-  const prevImage = images[prevIdx];
+  const preloadList = Array.from(new Set([nextIdx, next2Idx, prevIdx]))
+    .map((idx) => images[idx])
+    .filter((img): img is GalleryItem => Boolean(img));
 
   useEffect(() => {
     closeRef.current?.focus();
@@ -221,30 +223,25 @@ function Lightbox({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md transition-opacity duration-200 ease-out"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xl transition-opacity duration-200"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="Galeri büyütme"
     >
       {/* Hidden preloaders for next & prev images */}
-      {nextImage && (
-        <div className="hidden" aria-hidden="true">
-          <Image src={nextImage.src} alt="" width={1200} height={900} priority sizes="1px" />
+      {preloadList.map((img, i) => (
+        <div className="hidden" key={i} aria-hidden="true">
+          <Image src={img.src} alt="" width={2400} height={1800} priority quality={80} sizes="94vw" />
         </div>
-      )}
-      {prevImage && (
-        <div className="hidden" aria-hidden="true">
-          <Image src={prevImage.src} alt="" width={1200} height={900} priority sizes="1px" />
-        </div>
-      )}
+      ))}
 
       {/* Close Button */}
       <button
         type="button"
         ref={closeRef}
         onClick={onClose}
-        className="absolute top-4 right-4 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full bg-background/60 text-foreground backdrop-blur-md border border-border/50 transition-colors duration-300 hover:bg-foreground hover:text-background shadow-md md:top-6 md:right-6 md:h-11 md:w-11 cursor-pointer"
+        className="absolute top-4 right-4 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md border border-white/30 transition-colors duration-200 hover:bg-white hover:text-black shadow-lg md:top-6 md:right-6 md:h-11 md:w-11 cursor-pointer"
         aria-label="Kapat"
       >
         <X className="h-5 w-5" />
@@ -257,7 +254,7 @@ function Lightbox({
           e.stopPropagation();
           onPrev();
         }}
-        className="absolute left-3 top-1/2 z-50 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/60 text-foreground backdrop-blur-md border border-border/50 transition-colors duration-300 hover:bg-foreground hover:text-background shadow-md md:left-6 md:h-12 md:w-12 cursor-pointer"
+        className="absolute left-3 top-1/2 z-50 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md border border-white/30 transition-colors duration-200 hover:bg-white hover:text-black shadow-lg md:left-6 md:h-12 md:w-12 cursor-pointer"
         aria-label="Önceki görsel"
       >
         <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
@@ -270,7 +267,7 @@ function Lightbox({
           e.stopPropagation();
           onNext();
         }}
-        className="absolute right-3 top-1/2 z-50 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-background/60 text-foreground backdrop-blur-md border border-border/50 transition-colors duration-300 hover:bg-foreground hover:text-background shadow-md md:right-6 md:h-12 md:w-12 cursor-pointer"
+        className="absolute right-3 top-1/2 z-50 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md border border-white/30 transition-colors duration-200 hover:bg-white hover:text-black shadow-lg md:right-6 md:h-12 md:w-12 cursor-pointer"
         aria-label="Sonraki görsel"
       >
         <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
@@ -280,7 +277,12 @@ function Lightbox({
         className="mx-4 max-h-[92dvh] max-w-[94vw] md:mx-12"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative flex items-center justify-center min-h-[50dvh]">
+        <div className="relative flex items-center justify-center min-h-[40dvh] md:min-h-[50dvh]">
+          {!isLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+            </div>
+          )}
           <Image
             key={active}
             src={image.src}
@@ -289,22 +291,22 @@ function Lightbox({
             height={1800}
             sizes="94vw"
             priority
-            quality={90}
+            quality={80}
             onLoad={() => setIsLoaded(true)}
-            className={`max-h-[84dvh] max-w-full object-contain transition-opacity duration-300 ease-out ${
+            className={`h-auto w-auto max-h-[82dvh] max-w-full rounded-xl border border-white/10 shadow-2xl transition-opacity duration-200 ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           />
         </div>
-        <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-border/40 pt-3">
+        <figcaption className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-white/20 pt-3">
           <div className="flex items-center gap-3">
             {image.room && (
-              <span className="eyebrow bg-foreground text-background px-2.5 py-1 text-[10px]">
+              <span className="eyebrow bg-white/20 text-white border border-white/30 px-2.5 py-1 text-[10px] tracking-widest uppercase backdrop-blur-sm">
                 {getRoomLabel(image.room)}
               </span>
             )}
           </div>
-          <span className="eyebrow text-muted-foreground">{label}</span>
+          <span className="eyebrow text-white/80 tracking-widest">{label}</span>
         </figcaption>
       </figure>
     </div>
