@@ -60,7 +60,7 @@ export default function HomePage() {
                       width={1400}
                       height={1000}
                       sizes="(min-width: 768px) 50vw, 100vw"
-                      className="aspect-[16/10] w-full object-cover"
+                      className="aspect-[16/10] w-full object-cover grayscale contrast-[1.05] transition-all duration-700 group-hover:grayscale-0"
                     />
                   </div>
                   <div className="mt-5 flex items-baseline justify-between gap-4">
