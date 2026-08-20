@@ -21,8 +21,10 @@ export function SiteHeader() {
     { to: "/iletisim", label: t("nav_contact") },
   ] as const;
 
-  // Sadece tam ekran görselle açılan sayfalarda header şeffaf kalır.
-  const overHero = pathname === "/" || /^\/projeler\/[^/]+$/.test(pathname);
+  // Sadece tam ekran görselle açılan sayfalarda (Ana sayfa / veya /en ile proje detay sayfaları) header şeffaf kalır.
+  const isHome = pathname === "/" || pathname === "/en";
+  const isProjectDetail = /^\/(en\/)?(projeler|projects)\/[^/]+$/.test(pathname);
+  const overHero = isHome || isProjectDetail;
   const transparent = overHero && !scrolled && !open;
 
   useEffect(() => {
@@ -92,23 +94,26 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-6 md:gap-8">
             <nav className="hidden shrink-0 items-center gap-8 md:flex">
-              {nav.map((item) => (
-                <Link
-                  key={item.to}
-                  href={getLink(item.to)}
-                  className={`link-underline eyebrow transition-opacity ${
-                    isActive(pathname, item.to)
-                      ? transparent
-                        ? "opacity-100 font-semibold"
-                        : "text-foreground font-semibold"
-                      : transparent
-                        ? "opacity-75 hover:opacity-100"
-                        : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {nav.map((item) => {
+                const href = getLink(item.to);
+                return (
+                  <Link
+                    key={item.to}
+                    href={href}
+                    className={`link-underline eyebrow transition-opacity ${
+                      isActive(pathname, href)
+                        ? transparent
+                          ? "opacity-100 font-semibold"
+                          : "text-foreground font-semibold"
+                        : transparent
+                          ? "opacity-75 hover:opacity-100"
+                          : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Language Switcher Pill */}
@@ -173,11 +178,12 @@ export function SiteHeader() {
             <nav className="flex flex-col px-6 pt-2 pb-6">
               <div className="flex flex-col">
                 {nav.map((item, i) => {
-                  const active = isActive(pathname, item.to);
+                  const href = getLink(item.to);
+                  const active = isActive(pathname, href);
                   return (
                     <Link
                       key={item.to}
-                      href={getLink(item.to)}
+                      href={href}
                       onClick={() => setOpen(false)}
                       style={{ animationDelay: `${i * 35}ms` }}
                       className={`fade-down flex items-center justify-between py-3.5 border-b border-border/40 font-display text-xl font-normal tracking-wide transition-colors ${
@@ -235,7 +241,9 @@ export function SiteHeader() {
   );
 }
 
-function isActive(pathname: string, href: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
+function isActive(pathname: string, targetHref: string) {
+  if (targetHref === "/" || targetHref === "/en") {
+    return pathname === "/" || pathname === "/en";
+  }
+  return pathname === targetHref || pathname.startsWith(`${targetHref}/`);
 }
