@@ -1,67 +1,64 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Hizmetler — Kenet Mimarlık",
-  description:
-    "Ruhsat projesi, tasarım & uygulama, iç mimari tasarım, 3B görselleştirme ve şantiye yönetimi hizmetleri.",
-  openGraph: {
-    title: "Hizmetler — Kenet Mimarlık",
-    description: "Konseptten teslimata uçtan uca iç mimari ve mimari hizmetler.",
-  },
-};
-
-const featuredServices = [
-  {
-    title: "Ruhsat Projesi",
-    image: "/ruhsat_proje.webp",
-    text: "Yasal mevzuat ve imar yönetmeliklerine uygun mimari ruhsat projelerini hazırlıyor, yetkili kurum onay süreçlerini profesyonel olarak yürütüyoruz.",
-  },
-  {
-    title: "Tasarım & Uygulama",
-    image: "/hero_tasarim_uygulama.webp",
-    text: "Konsept tasarımdan anahtar teslim uygulamaya kadar tüm iç mimari süreçleri estetik, fonksiyonel detaylar ve titiz şantiye takibiyle hayata geçiriyoruz.",
-  },
-];
-
-const services = [
-  {
-    title: "İç Mimari Tasarım",
-    text: "Mekân kurgusu, malzeme seçkisi, mobilya, aydınlatma ve tekstil tasarımı.",
-  },
-  {
-    title: "Mekân Planlama",
-    text: "Fonksiyon akışı, ölçek ve kullanıcı deneyimine göre plan çözümleri.",
-  },
-  {
-    title: "Görselleştirme",
-    text: "Fotogerçekçi 3B görseller, animasyon ve fiziksel malzeme panosu.",
-  },
-  {
-    title: "Mobilya Tasarımı",
-    text: "Özel üretim mobilya, mutfak ve banyo dolapları, depolama çözümleri.",
-  },
-  {
-    title: "Uygulama & Şantiye",
-    text: "İmalatçı seçimi, uygulama takibi, kalite ve süre kontrolü.",
-  },
-  { title: "Danışmanlık", text: "Mevcut mekân değerlendirmesi, renovasyon ve stil yönlendirmesi." },
-];
-
-const steps = [
-  ["01", "Keşif", "Mekân analizi, ihtiyaç programı ve bütçe çerçevesi."],
-  ["02", "Konsept", "Plan alternatifleri, malzeme yaklaşımı ve atmosfer panosu."],
-  ["03", "Proje", "Uygulama projeleri, detaylar ve imalatçı koordinasyonu."],
-  ["04", "Teslim", "Şantiye takibi, son kontroller ve kullanıcı teslimi."],
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ServicesPage() {
+  const { language, t, getLink } = useLanguage();
+
+  const featuredServices = [
+    {
+      title: t("service1_title"),
+      image: "/ruhsat_proje.webp",
+      text: t("service1_desc"),
+    },
+    {
+      title: t("service2_title"),
+      image: "/hero_tasarim_uygulama.webp",
+      text: t("service2_desc"),
+    },
+  ];
+
+  const services = [
+    {
+      title: t("s_int"),
+      text: language === "en" ? "Spatial organization, material palette, furniture, lighting, and textile design." : "Mekân kurgusu, malzeme seçkisi, mobilya, aydınlatma ve tekstil tasarımı.",
+    },
+    {
+      title: t("s_space"),
+      text: language === "en" ? "Plan solutions according to functional flow, scale, and user experience." : "Fonksiyon akışı, ölçek ve kullanıcı deneyimine göre plan çözümleri.",
+    },
+    {
+      title: t("s_vis"),
+      text: language === "en" ? "Photorealistic 3D imagery, animation, and physical material sample boards." : "Fotogerçekçi 3B görseller, animasyon ve fiziksel malzeme panosu.",
+    },
+    {
+      title: t("s_furn"),
+      text: language === "en" ? "Custom furniture production, kitchen & bathroom cabinetry, and storage solutions." : "Özel üretim mobilya, mutfak ve banyo dolapları, depolama çözümleri.",
+    },
+    {
+      title: t("s_site"),
+      text: language === "en" ? "Fabricator selection, site supervision, quality, and schedule management." : "İmalatçı seçimi, uygulama takibi, kalite ve süre kontrolü.",
+    },
+    {
+      title: t("s_consult"),
+      text: t("s_consult_desc"),
+    },
+  ];
+
+  const steps = [
+    ["01", language === "en" ? "Discovery" : "Keşif", language === "en" ? "Site analysis, program requirements, and budget framework." : "Mekân analizi, ihtiyaç programı ve bütçe çerçevesi."],
+    ["02", language === "en" ? "Concept" : "Koncept", language === "en" ? "Plan alternatives, material direction, and mood boards." : "Plan alternatifleri, malzeme yaklaşımı ve atmosfer panosu."],
+    ["03", language === "en" ? "Design" : "Proje", language === "en" ? "Working drawings, detail engineering, and fabricator coordination." : "Uygulama projeleri, detaylar ve imalatçı koordinasyonu."],
+    ["04", language === "en" ? "Delivery" : "Teslim", language === "en" ? "Site supervision, final walkthroughs, and client handover." : "Şantiye takibi, son kontroller ve kullanıcı teslimi."],
+  ];
+
   return (
     <div className="mx-auto max-w-[1600px] px-6 pt-32 pb-24 md:px-10 md:pt-40">
-      <p className="eyebrow text-muted-foreground">Ne yapıyoruz</p>
-      <h1 className="mt-4 max-w-3xl font-display text-5xl font-light md:text-7xl">Hizmetler</h1>
+      <p className="eyebrow text-muted-foreground">{t("services_eyebrow")}</p>
+      <h1 className="mt-4 max-w-3xl font-display text-5xl font-light md:text-7xl">{t("nav_services")}</h1>
 
       {/* Featured Top Services (Ruhsat Projesi & Tasarım Uygulama) */}
       <div className="mt-12 grid gap-10 md:grid-cols-2">
@@ -87,7 +84,7 @@ export default function ServicesPage() {
 
       {/* Existing Services Grid */}
       <div className="mt-24 border-t border-border/30 pt-16">
-        <p className="eyebrow text-muted-foreground mb-10">Tüm Disiplinler</p>
+        <p className="eyebrow text-muted-foreground mb-10">{t("services_scope_eyebrow")}</p>
         <div className="grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <div
@@ -103,7 +100,7 @@ export default function ServicesPage() {
 
       {/* Process Section */}
       <div className="mt-28 border-t border-border/30 pt-16">
-        <h2 className="font-display text-4xl font-light md:text-5xl">Süreç</h2>
+        <h2 className="font-display text-4xl font-light md:text-5xl">{language === "en" ? "Process" : "Süreç"}</h2>
         <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(([n, t, d]) => (
             <div
@@ -123,15 +120,15 @@ export default function ServicesPage() {
 
       {/* Contact CTA */}
       <div className="mt-28 px-6 py-16 text-foreground md:px-14">
-        <p className="eyebrow text-muted-foreground mb-3">İletişim</p>
+        <p className="eyebrow text-muted-foreground mb-3">{t("home_contact_eyebrow")}</p>
         <h2 className="max-w-2xl font-display text-3xl leading-tight font-light md:text-5xl">
-          Projenizi konuşalım.
+          {language === "en" ? "Let's discuss your project." : "Projenizi konuşalım."}
         </h2>
         <Link
-          href="/iletisim"
+          href={getLink("/iletisim")}
           className="group mt-8 inline-flex items-center gap-3 bg-foreground px-8 py-4 eyebrow text-background transition-opacity hover:opacity-85"
         >
-          İletişime Geçin
+          {t("home_contact_btn")}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>

@@ -4,12 +4,13 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
+import { LanguageProvider } from "@/context/LanguageContext";
 import "../styles.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kenetmimarlik.com"),
   title: {
-    default: "Kenet Mimarlık",
+    default: "KENET | Architecture & Interior Design Studio",
     template: "%s",
   },
   description: "Bandırma, Balıkesir merkezli modern mimarlık stüdyosu.",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "Kenet Mimarlık",
+    title: "KENET | Architecture & Interior Design Studio",
     description: "Bandırma, Balıkesir merkezli modern mimarlık stüdyosu.",
     type: "website",
   },
@@ -46,19 +47,21 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         />
       </head>
       <body suppressHydrationWarning>
-        <a
-          href="#icerik"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-        >
-          İçeriğe geç
-        </a>
-        <SiteHeader />
-        <main id="icerik" className="min-h-dvh">
-          {children}
-        </main>
-        <SiteFooter />
-        <WhatsAppButton />
-        <Toaster />
+        <LanguageProvider>
+          <a
+            href="#icerik"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          >
+            İçeriğe geç
+          </a>
+          <SiteHeader />
+          <main id="icerik" className="min-h-dvh">
+            {children}
+          </main>
+          <SiteFooter />
+          <WhatsAppButton />
+          <Toaster />
+        </LanguageProvider>
       </body>
     </html>
   );

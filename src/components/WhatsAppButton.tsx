@@ -2,33 +2,31 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
-
-const WHATSAPP_OPTIONS = [
-  {
-    id: "ruhsat",
-    title: "Ruhsat Projesi",
-    phone: "0 543 263 85 20",
-    description: "Ruhsat projelendirme ve resmi süreçler",
-    url: `https://wa.me/905432638520?text=${encodeURIComponent(
-      "Merhaba, Ruhsat Projesi hakkında bilgi almak istiyorum.",
-    )}`,
-  },
-  {
-    id: "tasarim",
-    title: "Tasarım Uygulama",
-    phone: "0 536 206 30 63",
-    description: "İç mimari tasarım ve şantiye uygulaması",
-    url: `https://wa.me/905362063063?text=${encodeURIComponent(
-      "Merhaba, Tasarım & Uygulama hakkında bilgi almak istiyorum.",
-    )}`,
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export function WhatsAppButton() {
   const [footerVisible, setFooterVisible] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
+
+  const options = [
+    {
+      id: "ruhsat",
+      title: t("wa_ruhsat_title"),
+      phone: t("wa_ruhsat_phone"),
+      description: t("wa_ruhsat_desc"),
+      url: `https://wa.me/905362063063?text=${encodeURIComponent(t("wa_ruhsat_msg"))}`,
+    },
+    {
+      id: "tasarim",
+      title: t("wa_tasarim_title"),
+      phone: t("wa_tasarim_phone"),
+      description: t("wa_tasarim_desc"),
+      url: `https://wa.me/905432638520?text=${encodeURIComponent(t("wa_tasarim_msg"))}`,
+    },
+  ];
 
   useEffect(() => {
     const footer = document.querySelector("footer");
@@ -106,27 +104,27 @@ export function WhatsAppButton() {
         }`}
       >
         <div className="overflow-hidden rounded-2xl border border-border/80 bg-background/95 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.25)] backdrop-blur-xl">
-          <div className="mb-3 border-b border-border/60 pb-2.5">
+          <div className="mb-3 border-b border-border/60 pb-3">
             <div className="flex items-center justify-between">
-              <span className="font-display text-sm font-medium tracking-wide text-foreground">
-                WhatsApp İletişim Hattı
+              <span className="font-sans text-base font-semibold text-foreground">
+                {t("wa_title")}
               </span>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
                 className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                aria-label="Kapat"
+                aria-label={t("wa_close")}
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <p className="mt-0.5 text-[11px] text-muted-foreground">
-              Görüşmek istediğiniz birimi seçiniz:
+            <p className="mt-1 text-xs text-muted-foreground">
+              {t("wa_subtitle")}
             </p>
           </div>
 
           <div className="flex flex-col gap-2">
-            {WHATSAPP_OPTIONS.map((option) => (
+            {options.map((option) => (
               <a
                 key={option.id}
                 href={option.url}
@@ -136,10 +134,10 @@ export function WhatsAppButton() {
                 className="group relative flex items-center justify-between rounded-xl border border-border/50 bg-muted/30 p-3.5 transition-all duration-200 hover:border-foreground/20 hover:bg-foreground hover:text-background"
               >
                 <div>
-                  <div className="font-medium text-xs sm:text-sm leading-tight text-foreground group-hover:text-background">
+                  <div className="font-semibold text-sm leading-tight text-foreground group-hover:text-background">
                     {option.title}
                   </div>
-                  <div className="mt-1 text-[11px] text-muted-foreground group-hover:text-background/80">
+                  <div className="mt-1 text-xs text-muted-foreground group-hover:text-background/80">
                     {option.phone}
                   </div>
                 </div>

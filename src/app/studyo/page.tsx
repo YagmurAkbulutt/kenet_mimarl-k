@@ -1,38 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import architecturalDrawing from "@/assets/about-architectural-drawing.png";
-
-export const metadata: Metadata = {
-  title: "Hakkımızda — Kenet Mimarlık",
-  description:
-    "Kenet Mimarlık; Göktuğkan Şirin ve Hüseyin Akar tarafından Bandırma, Balıkesir'de kurulan genç, dinamik ve yenilikçi mimarlık stüdyosu.",
-  openGraph: {
-    title: "Hakkımızda — Kenet Mimarlık",
-    description: "Bandırma, Balıkesir merkezli genç, dinamik ve yenilikçi mimarlık stüdyosu.",
-  },
-};
-
-const team = [
-  { name: "Göktuğkan Şirin", role: "Kurucu Ortak, Mimar" },
-  { name: "Hüseyin Akar", role: "Kurucu Ortak, Mimar" },
-];
-
-const principles = [
-  {
-    title: "Bütüncül Tasarım",
-    text: "İlk fikirden ruhsat, detay ve uygulamaya kadar kararları aynı mimari çizgide tutan kontrollü süreç.",
-  },
-  {
-    title: "Net Proje Disiplini",
-    text: "Estetik beklentiyi teknik doğruluk, bütçe, takvim ve saha gerçekliğiyle birlikte yöneten profesyonel çalışma düzeni.",
-  },
-  {
-    title: "Seçici Detay",
-    text: "Malzeme, oran, ışık ve işçilik kararlarında sade ama güçlü; uzun ömürlü ve nitelikli mekân dili.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 function SectionDivider({ reverse = false }: { reverse?: boolean }) {
   return (
@@ -48,25 +20,45 @@ function SectionDivider({ reverse = false }: { reverse?: boolean }) {
 }
 
 export default function StudioPage() {
+  const { language, t, getLink } = useLanguage();
+
+  const team = [
+    { name: "Göktuğkan Şirin", role: language === "en" ? "Co-Founder, Architect" : "Kurucu Ortak, Mimar" },
+    { name: "Hüseyin Akar", role: language === "en" ? "Co-Founder, Architect" : "Kurucu Ortak, Mimar" },
+  ];
+
+  const principles = [
+    {
+      title: t("val1_title"),
+      text: t("val1_desc"),
+    },
+    {
+      title: t("val2_title"),
+      text: t("val2_desc"),
+    },
+    {
+      title: t("val3_title"),
+      text: t("val3_desc"),
+    },
+  ];
+
   return (
     <div className="mx-auto max-w-[1600px] px-6 pt-30 pb-24 md:px-10 md:pt-36">
       <section className="grid gap-10 md:grid-cols-[1.08fr_0.92fr] md:items-end">
         <div>
-          <p className="eyebrow text-muted-foreground">Hakkımızda</p>
+          <p className="eyebrow text-muted-foreground">{t("studio_eyebrow")}</p>
           <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[1.05] font-light md:text-7xl">
-            Genç ve yenilikçi bir mimarlık stüdyosu.
+            {language === "en" ? "A fresh and innovative architecture studio." : "Genç ve yenilikçi bir mimarlık stüdyosu."}
           </h1>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Kenet Mimarlık, kurucu mimarlar Göktuğkan Şirin ve Hüseyin Akar tarafından kurulan;
-            ruhsat, tasarım ve uygulama süreçlerini aynı bütünlük içinde ele alan bir mimarlık
-            ofisidir.
+            {t("studio_desc")}
           </p>
         </div>
 
         <div className="relative h-64 overflow-hidden md:h-[48dvh] md:max-h-[460px] md:min-h-[340px]">
           <Image
             src={architecturalDrawing}
-            alt="Mimari ruhsat projesi, eskiz çizimleri ve ölçek cetveli detayı"
+            alt="Kenet Mimarlık Studio"
             fill
             sizes="(min-width: 768px) 46vw, 100vw"
             className="object-cover"
@@ -78,16 +70,17 @@ export default function StudioPage() {
       <SectionDivider />
 
       <section className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]">
-        <p className="eyebrow text-muted-foreground">Kuruluş</p>
+        <p className="eyebrow text-muted-foreground">{language === "en" ? "Foundation" : "Kuruluş"}</p>
         <div className="max-w-3xl space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
           <p>
-            Ofis, kurucuların büyükşehirlerde edindiği deneyimi kendi memleketlerinde nitelikli,
-            yenilikçi ve uygulanabilir bir mimarlık pratiğine dönüştürme fikriyle kuruldu.
+            {language === "en"
+              ? "The studio was established with the vision of channeling the founders' experience gained in major metropolitan hubs into a refined, innovative, and practical architectural approach in their hometown."
+              : "Ofis, kurucuların büyükşehirlerde edindiği deneyimi kendi memleketlerinde nitelikli, yenilikçi ve uygulanabilir bir mimarlık pratiğine dönüştürme fikriyle kuruldu."}
           </p>
           <p>
-            Kenet Mimarlık; ruhsat projesinden tasarım ve uygulamaya kadar süreci bütüncül ele alan,
-            genç, dinamik ve çözüm odaklı bir ekip yapısıyla çalışır. Hedefi, bulunduğu çevrede
-            yenilik hissi güçlü, uygulanabilir ve kalıcı mekânlar üretmektir.
+            {language === "en"
+              ? "Kenet Mimarlık operates with a dynamic and solution-oriented team structure that manages the journey from permit drawings to design and turn-key execution as one unified whole."
+              : "Kenet Mimarlık; ruhsat projesinden tasarım ve uygulamaya kadar süreci bütüncül ele alan, genç, dinamik ve çözüm odaklı bir ekip yapısıyla çalışır."}
           </p>
         </div>
       </section>
@@ -97,9 +90,9 @@ export default function StudioPage() {
       <section>
         <div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]">
           <div>
-            <p className="eyebrow text-muted-foreground">Yaklaşım</p>
+            <p className="eyebrow text-muted-foreground">{t("home_approach_eyebrow")}</p>
             <h2 className="mt-5 max-w-sm font-display text-4xl leading-tight font-light md:text-5xl">
-              Kontrollü, seçici ve uygulanabilir.
+              {language === "en" ? "Controlled, selective, and executable." : "Kontrollü, seçici ve uygulanabilir."}
             </h2>
           </div>
 
@@ -123,9 +116,9 @@ export default function StudioPage() {
 
       <section className="grid gap-12 md:grid-cols-[0.7fr_1.3fr]">
         <div>
-          <p className="eyebrow text-muted-foreground">Kurucular</p>
+          <p className="eyebrow text-muted-foreground">{t("studio_founders_title")}</p>
           <h2 className="mt-5 max-w-xl font-display text-4xl leading-tight font-light md:text-5xl">
-            İki mimar, tek odak: doğru kurulmuş proje süreci.
+            {language === "en" ? "Two architects, one focus: a seamlessly built project journey." : "İki mimar, tek odak: doğru kurulmuş proje süreci."}
           </h2>
         </div>
 
@@ -144,16 +137,16 @@ export default function StudioPage() {
       <section>
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <p className="eyebrow text-muted-foreground">İletişim</p>
+            <p className="eyebrow text-muted-foreground">{t("home_contact_eyebrow")}</p>
             <h2 className="mt-5 max-w-2xl font-display text-4xl leading-tight font-light md:text-5xl">
-              Projenin ilk adımı için Kenet Mimarlık ile görüşün.
+              {language === "en" ? "Contact Kenet Mimarlık for the first step of your project." : "Projenin ilk adımı için Kenet Mimarlık ile görüşün."}
             </h2>
           </div>
           <Link
-            href="/iletisim"
+            href={getLink("/iletisim")}
             className="group inline-flex min-h-12 w-fit items-center gap-3 border-b border-foreground pb-1 eyebrow transition-opacity hover:opacity-60"
           >
-            İletişime Geçin
+            {t("home_contact_btn")}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>

@@ -1,18 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink, Instagram } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const mapsUrl =
   "https://www.google.com/maps/place/KENET+M%C4%B0MARLIK/@40.3441386,27.9725994,17z/data=!3m1!4b1!4m6!3m5!1s0x14b5d379344f6913:0x3e56971620068a4c!8m2!3d40.3441345!4d27.9751743!16s%2Fg%2F11xkpvc000?entry=ttu&g_ep=EgoyMDI2MDgxMS4wIKXMDSoASAFQAw%3D%3D";
 
 export function SiteFooter() {
+  const { t, getLink } = useLanguage();
+
   return (
     <footer className="footer-pattern relative overflow-hidden bg-primary text-primary-foreground">
       <div className="relative mx-auto max-w-[1600px] px-6 pt-16 pb-8 md:px-10 md:pt-20">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(160px,0.45fr)_minmax(420px,1fr)]">
           <div>
             <Link
-              href="/"
+              href={getLink("/")}
               className="relative block h-12 w-[172px]"
               aria-label="Kenet Mimarlık — ana sayfa"
             >
@@ -25,32 +30,31 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-primary-foreground/60">
-              Ölçek fark etmeksizin; ışık, malzeme ve oran üzerine kurulu sakin bir iç mimari
-              pratiği.
+              {t("footer_tagline")}
             </p>
           </div>
 
           <div className="space-y-3 text-sm">
-            <p className="eyebrow text-primary-foreground/50">Menü</p>
+            <p className="eyebrow text-primary-foreground/50">{t("footer_menu")}</p>
             <div className="flex flex-col gap-2">
-              <Link href="/projeler" className="hover:opacity-60">
-                Projeler
+              <Link href={getLink("/projeler")} className="hover:opacity-60">
+                {t("nav_projects")}
               </Link>
-              <Link href="/studyo" className="hover:opacity-60">
-                Hakkımızda
+              <Link href={getLink("/studyo")} className="hover:opacity-60">
+                {t("nav_about")}
               </Link>
-              <Link href="/hizmetler" className="hover:opacity-60">
-                Hizmetler
+              <Link href={getLink("/hizmetler")} className="hover:opacity-60">
+                {t("nav_services")}
               </Link>
-              <Link href="/iletisim" className="hover:opacity-60">
-                İletişim
+              <Link href={getLink("/iletisim")} className="hover:opacity-60">
+                {t("nav_contact")}
               </Link>
             </div>
           </div>
 
           <div className="grid gap-x-10 gap-y-8 text-sm sm:grid-cols-2">
             <div className="space-y-3">
-              <p className="eyebrow text-primary-foreground/50">İletişim</p>
+              <p className="eyebrow text-primary-foreground/50">{t("footer_contact")}</p>
               <a href="mailto:info@kenetmimarlik.com" className="block hover:opacity-60">
                 info@kenetmimarlik.com
               </a>
@@ -71,7 +75,7 @@ export function SiteFooter() {
             </div>
 
             <div className="space-y-3">
-              <p className="eyebrow text-primary-foreground/50">Adres</p>
+              <p className="eyebrow text-primary-foreground/50">{t("footer_address")}</p>
               <a
                 href={mapsUrl}
                 target="_blank"

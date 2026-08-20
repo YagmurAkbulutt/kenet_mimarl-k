@@ -5,19 +5,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const nav = [
-  { to: "/", label: "Ana Sayfa" },
-  { to: "/projeler", label: "Projeler" },
-  { to: "/studyo", label: "Hakkımızda" },
-  { to: "/hizmetler", label: "Hizmetler" },
-  { to: "/iletisim", label: "İletişim" },
-] as const;
+import { useLanguage } from "@/context/LanguageContext";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { language, setLanguage, t, getLink } = useLanguage();
+
+  const nav = [
+    { to: "/", label: t("nav_home") },
+    { to: "/projeler", label: t("nav_projects") },
+    { to: "/studyo", label: t("nav_about") },
+    { to: "/hizmetler", label: t("nav_services") },
+    { to: "/iletisim", label: t("nav_contact") },
+  ] as const;
+
   // Sadece tam ekran görselle açılan sayfalarda header şeffaf kalır.
   const overHero = pathname === "/" || /^\/projeler\/[^/]+$/.test(pathname);
   const transparent = overHero && !scrolled && !open;
@@ -69,7 +72,7 @@ export function SiteHeader() {
       >
         <div className="mx-auto grid max-w-[1600px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4 md:px-10 md:py-5">
           <Link
-            href="/"
+            href={getLink("/")}
             className="relative block h-9 w-[130px] min-w-0 md:h-11 md:w-[158px]"
             aria-label="Kenet Mimarlık — ana sayfa"
           >
@@ -87,39 +90,81 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden shrink-0 items-center gap-8 md:flex">
-            {nav.map((item) => (
-              <Link
-                key={item.to}
-                href={item.to}
-                className={`link-underline eyebrow transition-opacity ${
-                  isActive(pathname, item.to)
-                    ? transparent
-                      ? "opacity-100"
-                      : "text-foreground"
-                    : transparent
-                      ? "opacity-75 hover:opacity-100"
-                      : "text-muted-foreground hover:text-foreground"
+          <div className="flex items-center gap-6 md:gap-8">
+            <nav className="hidden shrink-0 items-center gap-8 md:flex">
+              {nav.map((item) => (
+                <Link
+                  key={item.to}
+                  href={getLink(item.to)}
+                  className={`link-underline eyebrow transition-opacity ${
+                    isActive(pathname, item.to)
+                      ? transparent
+                        ? "opacity-100 font-semibold"
+                        : "text-foreground font-semibold"
+                      : transparent
+                        ? "opacity-75 hover:opacity-100"
+                        : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Language Switcher Pill */}
+            {!open && (
+              <div
+                className={`hidden md:inline-flex items-center gap-0.5 rounded-full p-0.5 text-[11px] font-medium tracking-wider uppercase transition-all duration-300 ${
+                  transparent
+                    ? "border border-primary-foreground/30 text-primary-foreground"
+                    : "border border-border text-foreground"
                 }`}
               >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("tr")}
+                  className={`rounded-full px-2.5 py-0.5 transition-all duration-200 ${
+                    language === "tr"
+                      ? transparent
+                        ? "bg-primary-foreground text-primary font-semibold shadow-xs"
+                        : "bg-foreground text-background font-semibold shadow-xs"
+                      : "opacity-60 hover:opacity-100"
+                  }`}
+                  aria-label="Türkçe Dil Seçeneği"
+                >
+                  TR
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("en")}
+                  className={`rounded-full px-2.5 py-0.5 transition-all duration-200 ${
+                    language === "en"
+                      ? transparent
+                        ? "bg-primary-foreground text-primary font-semibold shadow-xs"
+                        : "bg-foreground text-background font-semibold shadow-xs"
+                      : "opacity-60 hover:opacity-100"
+                  }`}
+                  aria-label="English Language Option"
+                >
+                  EN
+                </button>
+              </div>
+            )}
 
-          <button
-            type="button"
-            aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
-            className="-mr-3 inline-flex h-11 w-11 shrink-0 items-center justify-center text-foreground transition-colors md:hidden"
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+            <button
+              type="button"
+              aria-label={open ? "Menüyü kapat" : "Menüyü aç"}
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              onClick={() => setOpen((v) => !v)}
+              className="-mr-3 inline-flex h-11 w-11 shrink-0 items-center justify-center text-foreground transition-colors md:hidden"
+            >
+              {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobil Menü İçeriği - Header ile Eş Zamanlı ve Bitişik Açılan */}
+        {/* Mobil Menü İçeriği */}
         {open && (
           <div
             id="mobile-nav"
@@ -132,7 +177,7 @@ export function SiteHeader() {
                   return (
                     <Link
                       key={item.to}
-                      href={item.to}
+                      href={getLink(item.to)}
                       onClick={() => setOpen(false)}
                       style={{ animationDelay: `${i * 35}ms` }}
                       className={`fade-down flex items-center justify-between py-3.5 border-b border-border/40 font-display text-xl font-normal tracking-wide transition-colors ${
@@ -148,7 +193,31 @@ export function SiteHeader() {
                 })}
               </div>
 
-              <div className="pt-4 flex justify-end">
+              <div className="pt-4 flex items-center justify-between">
+                <div className="inline-flex items-center gap-0.5 rounded-full border border-border p-0.5 text-xs uppercase font-medium">
+                  <button
+                    type="button"
+                    onClick={() => setLanguage("tr")}
+                    className={`rounded-full px-3 py-1 transition-all ${
+                      language === "tr"
+                        ? "bg-foreground text-background font-semibold"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    TR
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage("en")}
+                    className={`rounded-full px-3 py-1 transition-all ${
+                      language === "en"
+                        ? "bg-foreground text-background font-semibold"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    EN
+                  </button>
+                </div>
                 <a
                   href="https://www.instagram.com/kenetmimarlik/"
                   target="_blank"

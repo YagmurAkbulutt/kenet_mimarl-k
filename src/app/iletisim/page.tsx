@@ -1,15 +1,7 @@
-import type { Metadata } from "next";
-import { ExternalLink, Instagram, Mail, MapPin, Phone } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "İletişim — Kenet Mimarlık",
-  description:
-    "Kenet Mimarlık ile iletişime geçin: Bandırma, Balıkesir. Adres, telefon, e-posta ve harita bilgileri.",
-  openGraph: {
-    title: "İletişim — Kenet Mimarlık",
-    description: "Proje talepleriniz için Kenet Mimarlık ile iletişime geçin.",
-  },
-};
+import { ExternalLink, Instagram, Mail, MapPin, Phone } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const mapsUrl =
   "https://www.google.com/maps/place/KENET+M%C4%B0MARLIK/@40.3441386,27.9725994,17z/data=!3m1!4b1!4m6!3m5!1s0x14b5d379344f6913:0x3e56971620068a4c!8m2!3d40.3441345!4d27.9751743!16s%2Fg%2F11xkpvc000?entry=ttu&g_ep=EgoyMDI2MDgxMS4wIKXMDSoASAFQAw%3D%3D";
@@ -23,15 +15,17 @@ const phones = [
 ] as const;
 
 export default function ContactPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="mx-auto max-w-[1600px] px-6 pt-28 pb-24 md:px-10 md:pt-36">
       <div className="grid gap-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-end">
         <div>
-          <p className="eyebrow text-muted-foreground">Bize ulaşın</p>
-          <h1 className="mt-4 font-display text-4xl font-light md:text-5xl">İletişim</h1>
+          <p className="eyebrow text-muted-foreground">{t("contact_eyebrow")}</p>
+          <h1 className="mt-4 font-display text-4xl font-light md:text-5xl">{t("contact_title")}</h1>
         </div>
         <p className="max-w-md text-sm leading-relaxed text-muted-foreground md:justify-self-end md:text-right">
-          Proje ve randevu talepleriniz için bize ulaşın.
+          {t("contact_desc")}
         </p>
       </div>
 
@@ -50,7 +44,7 @@ export default function ContactPage() {
           <div className="grid gap-4 border-b border-border pb-7 sm:grid-cols-[auto_1fr]">
             <MapPin className="mt-1 h-5 w-5 text-muted-foreground" />
             <div>
-              <p className="eyebrow text-muted-foreground">Adres</p>
+              <p className="eyebrow text-muted-foreground">{t("contact_address_title")}</p>
               <p className="mt-3 text-sm leading-relaxed">
                 KENET Mimarlık
                 <br />
@@ -64,7 +58,7 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="mt-5 inline-flex min-h-11 items-center gap-3 border border-foreground/20 px-6 py-3 eyebrow transition-colors hover:bg-primary hover:text-primary-foreground"
               >
-                Haritada Aç
+                {t("contact_map_btn")}
                 <ExternalLink className="h-4 w-4" />
               </a>
             </div>
@@ -73,7 +67,7 @@ export default function ContactPage() {
           <div className="grid gap-4 border-b border-border py-7 sm:grid-cols-[auto_1fr]">
             <Mail className="mt-1 h-5 w-5 text-muted-foreground" />
             <div>
-              <p className="eyebrow text-muted-foreground">E-posta</p>
+              <p className="eyebrow text-muted-foreground">{t("contact_email_title")}</p>
               <a
                 href={`mailto:${email}`}
                 className="mt-3 block text-sm transition-opacity hover:opacity-60"
@@ -86,7 +80,7 @@ export default function ContactPage() {
           <div className="grid gap-4 border-b border-border py-7 sm:grid-cols-[auto_1fr]">
             <Phone className="mt-1 h-5 w-5 text-muted-foreground" />
             <div>
-              <p className="eyebrow text-muted-foreground">Telefon</p>
+              <p className="eyebrow text-muted-foreground">{t("contact_phone_title")}</p>
               <div className="mt-3 space-y-2">
                 {phones.map((phone) => (
                   <a
@@ -104,7 +98,7 @@ export default function ContactPage() {
           <div className="grid gap-4 pt-7 sm:grid-cols-[auto_1fr]">
             <Instagram className="mt-1 h-5 w-5 text-muted-foreground" />
             <div>
-              <p className="eyebrow text-muted-foreground">Sosyal</p>
+              <p className="eyebrow text-muted-foreground">{t("contact_social_title")}</p>
               <a
                 href="https://www.instagram.com/kenetmimarlik/"
                 target="_blank"

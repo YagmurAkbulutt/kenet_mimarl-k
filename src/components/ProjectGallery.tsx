@@ -4,9 +4,29 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { Project, GalleryItem } from "@/data/projects";
+import { useLanguage } from "@/context/LanguageContext";
+
+const roomTranslations: Record<string, { tr: string; en: string }> = {
+  "Tüm Mekânlar": { tr: "Tüm Mekânlar", en: "All Rooms" },
+  Salon: { tr: "Salon", en: "Living Room" },
+  Mutfak: { tr: "Mutfak", en: "Kitchen" },
+  "Oturma Odası": { tr: "Oturma Odası", en: "Lounge" },
+  "Yatak Odası": { tr: "Yatak Odası", en: "Bedroom" },
+  Koridor: { tr: "Koridor", en: "Hallway" },
+  Balkon: { tr: "Balkon", en: "Balcony" },
+};
 
 export function ProjectGallery({ project }: { project: Project }) {
+  const { language, t } = useLanguage();
   const [active, setActive] = useState<number | null>(null);
+
+  const getRoomLabel = (room: string) => {
+    const item = roomTranslations[room];
+    if (!item) return room;
+    return language === "en" ? item.en : item.tr;
+  };
+
+  const allRoomsLabel = getRoomLabel("Tüm Mekânlar");
   const [activeRoom, setActiveRoom] = useState<string>("Tüm Mekânlar");
 
   // Extract unique room categories present in this project
@@ -52,9 +72,9 @@ export function ProjectGallery({ project }: { project: Project }) {
       {/* Header & Filter Controls */}
       <div className="mb-10 border-b border-border pb-6">
         <div className="flex items-baseline justify-between">
-          <p className="eyebrow text-muted-foreground">Proje Galerisi</p>
+          <p className="eyebrow text-muted-foreground">{t("gallery_title")}</p>
           <span className="eyebrow text-muted-foreground">
-            {String(total).padStart(2, "0")} Görsel
+            {String(total).padStart(2, "0")} {language === "en" ? "Images" : "Görsel"}
           </span>
         </div>
 
@@ -72,7 +92,7 @@ export function ProjectGallery({ project }: { project: Project }) {
                   : "border border-border text-muted-foreground hover:border-foreground hover:text-foreground"
               }`}
             >
-              Tüm Mekânlar ({project.gallery.length})
+              {allRoomsLabel} ({project.gallery.length})
             </button>
             {roomCategories.map((room) => {
               const count = project.gallery.filter((g) => g.room === room).length;
@@ -90,7 +110,7 @@ export function ProjectGallery({ project }: { project: Project }) {
                       : "border border-border text-muted-foreground hover:border-foreground hover:text-foreground"
                   }`}
                 >
-                  {room} ({count})
+                  {getRoomLabel(room)} ({count})
                 </button>
               );
             })}
@@ -111,17 +131,20 @@ export function ProjectGallery({ project }: { project: Project }) {
               ? "md:col-span-4 md:row-span-2"
               : "md:col-span-4 md:row-span-2";
 
+          const caption = language === "en" && g.captionEn ? g.captionEn : g.caption;
+          const projectTitle = language === "en" && project.titleEn ? project.titleEn : project.title;
+
           return (
             <button
               key={`${g.caption}-${i}`}
               type="button"
               onClick={() => open(i)}
               className={`group relative block w-full overflow-hidden bg-muted text-left outline outline-offset-[-1px] outline-border ${span}`}
-              aria-label={`Görsel büyüt: ${g.caption}`}
+              aria-label={`${caption}`}
             >
               <Image
                 src={g.src}
-                alt={`${project.title} — ${g.caption}`}
+                alt={`${projectTitle} — ${caption}`}
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
@@ -130,7 +153,7 @@ export function ProjectGallery({ project }: { project: Project }) {
               {/* Category Badge on top left */}
               {g.room && (
                 <div className="absolute top-4 left-4 z-10 bg-background/85 px-3 py-1 text-[10px] uppercase tracking-widest text-foreground backdrop-blur-md border border-border/50">
-                  {g.room}
+                  {getRoomLabel(g.room)}
                 </div>
               )}
 
@@ -146,8 +169,9 @@ export function ProjectGallery({ project }: { project: Project }) {
       {active !== null && (
         <Lightbox
           images={filteredGallery}
-          projectTitle={project.title}
+          projectTitle={language === "en" && project.titleEn ? project.titleEn : project.title}
           active={active}
+          getRoomLabel={getRoomLabel}
           onClose={close}
           onPrev={prev}
           onNext={next}
@@ -161,6 +185,7 @@ function Lightbox({
   images,
   projectTitle,
   active,
+  getRoomLabel,
   onClose,
   onPrev,
   onNext,
@@ -168,6 +193,7 @@ function Lightbox({
   images: GalleryItem[];
   projectTitle: string;
   active: number;
+  getRoomLabel: (room: string) => string;
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
@@ -258,7 +284,7 @@ function Lightbox({
           <Image
             key={active}
             src={image.src}
-            alt={image.room ? `${projectTitle} — ${image.room}` : projectTitle}
+            alt={image.room ? `${projectTitle} — ${getRoomLabel(image.room)}` : projectTitle}
             width={2400}
             height={1800}
             sizes="94vw"
@@ -274,7 +300,7 @@ function Lightbox({
           <div className="flex items-center gap-3">
             {image.room && (
               <span className="eyebrow bg-foreground text-background px-2.5 py-1 text-[10px]">
-                {image.room}
+                {getRoomLabel(image.room)}
               </span>
             )}
           </div>

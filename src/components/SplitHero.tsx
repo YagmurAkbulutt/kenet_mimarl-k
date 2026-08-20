@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 type ActivePanel = "left" | "right" | null;
 
@@ -28,6 +29,7 @@ export function SplitHero() {
   const [closing, setClosing] = useState<ActivePanel>(null);
   const closingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { t, getLink } = useLanguage();
 
   useEffect(() => {
     return () => {
@@ -98,30 +100,31 @@ export function SplitHero() {
 
         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center px-6 text-center">
           <h1 className="fade-up font-display text-4xl leading-none font-light tracking-normal md:text-5xl lg:text-6xl">
-            projeden <span className="font-semibold">uygulamaya</span>
+            {t("hero_headline_p1")}{" "}
+            <span className="font-semibold">{t("hero_headline_p2")}</span>
           </h1>
         </div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-9 z-20 flex items-center justify-center px-6 md:bottom-12">
           <div className="grid w-full max-w-4xl grid-cols-[1fr_auto_1fr] items-center text-center">
             <Link
-              href="/hizmetler"
+              href={getLink("/hizmetler")}
               onMouseEnter={() => activate("left")}
               onMouseLeave={scheduleReset}
               onFocus={() => activate("left")}
               className="split-hero-trigger-left split-hero-nav-title pointer-events-auto justify-self-end pr-4 font-display text-sm font-light tracking-[0.14em] uppercase outline-none md:pr-5 md:text-xl md:tracking-[0.22em]"
             >
-              Ruhsat Projesi
+              {t("hero_ruhsat")}
             </Link>
             <span className="h-16 w-px bg-primary-foreground md:h-24" aria-hidden="true" />
             <Link
-              href="/hizmetler"
+              href={getLink("/hizmetler")}
               onMouseEnter={() => activate("right")}
               onMouseLeave={scheduleReset}
               onFocus={() => activate("right")}
               className="split-hero-trigger-right split-hero-nav-title pointer-events-auto justify-self-start pl-4 font-display text-sm font-light tracking-[0.14em] uppercase outline-none md:pl-5 md:text-xl md:tracking-[0.22em]"
             >
-              Tasarım Uygulama
+              {t("hero_tasarim")}
             </Link>
           </div>
         </div>
