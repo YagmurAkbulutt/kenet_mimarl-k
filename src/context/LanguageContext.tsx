@@ -89,7 +89,7 @@ export const translations = {
     // Studio Page
     studio_eyebrow: "Stüdyo",
     studio_title: "Kenet Mimarlık",
-    studio_desc: "Bandırma merkezli; ruhsat projelerinden iç mekan tasarımlarına ve anahtar teslim şantiye uygulamalarına uzanan bütüncül bir mimarlık stüdyosu.",
+    studio_desc: "Bütüncül mimari tasarım, iç mekan kurgusu ve uygulama pratiği.",
     studio_founders_title: "Kurucular",
     studio_founders_desc: "Stüdyomuzun vizyonunu ve tasarım disiplinini şekillendiren ortaklarımız.",
     studio_values_eyebrow: "İlkelerimiz",
@@ -212,7 +212,7 @@ export const translations = {
     // Studio Page
     studio_eyebrow: "Studio",
     studio_title: "Kenet Mimarlık",
-    studio_desc: "A Bandırma-based architecture studio offering holistic services from architectural permits to interior design and turn-key site build.",
+    studio_desc: "A contemporary practice delivering holistic architectural design, interior spatial concepts, and turn-key execution.",
     studio_founders_title: "Founders",
     studio_founders_desc: "Our partners shaping the vision and design discipline of our studio.",
     studio_values_eyebrow: "Principles",

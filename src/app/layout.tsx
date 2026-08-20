@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     default: "KENET | Architecture & Interior Design Studio",
     template: "%s",
   },
-  description: "Bandırma, Balıkesir merkezli modern mimarlık stüdyosu.",
+  description: "Bütüncül mimari tasarım, iç mekan kurgusu ve uygulama pratiği.",
   authors: [{ name: "Kenet Mimarlık" }],
   icons: {
     icon: "/favicon.png",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "KENET | Architecture & Interior Design Studio",
-    description: "Bandırma, Balıkesir merkezli modern mimarlık stüdyosu.",
+    description: "Bütüncül mimari tasarım, iç mekan kurgusu ve uygulama pratiği.",
     type: "website",
   },
   twitter: {
