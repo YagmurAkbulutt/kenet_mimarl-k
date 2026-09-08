@@ -14,7 +14,57 @@ const roomTranslations: Record<string, { tr: string; en: string }> = {
   "Yatak Odası": { tr: "Yatak Odası", en: "Bedroom" },
   Koridor: { tr: "Koridor", en: "Hallway" },
   Balkon: { tr: "Balkon", en: "Balcony" },
+  "Yemek Alanı": { tr: "Yemek Alanı", en: "Dining Area" },
+  Banyo: { tr: "Banyo", en: "Bathroom" },
 };
+
+function arrangeGalleryItems(items: GalleryItem[]): GalleryItem[] {
+  const pool = [...items];
+  const arranged: GalleryItem[] = [];
+
+  while (pool.length > 0) {
+    const first = pool[0]!;
+    const fRatio = first.aspectRatio ?? "portrait";
+
+    if (fRatio === "landscape") {
+      const landscapeItem = pool.shift()!;
+      arranged.push(landscapeItem);
+      // Pair with 1 portrait item to complete 3-column row (2 + 1)
+      const pIdx = pool.findIndex((item) => (item.aspectRatio ?? "portrait") === "portrait");
+      if (pIdx !== -1) {
+        const pItem = pool.splice(pIdx, 1)[0]!;
+        arranged.push(pItem);
+      }
+    } else {
+      // First is portrait (1 col)
+      // Check if 2nd item is landscape (1 + 2 = 3 cols)
+      if (pool.length > 1 && (pool[1]!.aspectRatio ?? "portrait") === "landscape") {
+        const pItem = pool.shift()!;
+        const lItem = pool.shift()!;
+        arranged.push(pItem);
+        arranged.push(lItem);
+      } else {
+        // Fill row with 3 portraits (1 + 1 + 1 = 3 cols)
+        const p1 = pool.shift()!;
+        arranged.push(p1);
+
+        const p2Idx = pool.findIndex((item) => (item.aspectRatio ?? "portrait") === "portrait");
+        if (p2Idx !== -1) {
+          const p2 = pool.splice(p2Idx, 1)[0]!;
+          arranged.push(p2);
+
+          const p3Idx = pool.findIndex((item) => (item.aspectRatio ?? "portrait") === "portrait");
+          if (p3Idx !== -1) {
+            const p3 = pool.splice(p3Idx, 1)[0]!;
+            arranged.push(p3);
+          }
+        }
+      }
+    }
+  }
+
+  return arranged;
+}
 
 export function ProjectGallery({ project }: { project: Project }) {
   const { language, t } = useLanguage();
@@ -40,7 +90,9 @@ export function ProjectGallery({ project }: { project: Project }) {
       ? project.gallery
       : project.gallery.filter((g) => g.room === activeRoom);
 
-  const total = filteredGallery.length;
+  const arrangedGallery = arrangeGalleryItems(filteredGallery);
+
+  const total = arrangedGallery.length;
 
   const open = (i: number) => setActive(i);
   const close = useCallback(() => setActive(null), []);
@@ -118,19 +170,14 @@ export function ProjectGallery({ project }: { project: Project }) {
         )}
       </div>
 
-      {/* Gallery Grid */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-12 auto-rows-[240px] md:auto-rows-[260px]">
-        {filteredGallery.map((g, i) => {
-          const isPatternLarge = i % 5 === 0;
-          const isPatternMedium = i % 5 === 1;
+      {/* Gallery Grid - Smart gap-free 3-column row packing */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 auto-rows-[340px] sm:auto-rows-[400px] md:auto-rows-[480px]">
+        {arrangedGallery.map((g, i) => {
+          const isLandscape = g.aspectRatio === "landscape";
+          const spanClass = isLandscape
+            ? "sm:col-span-2 md:col-span-2"
+            : "sm:col-span-1 md:col-span-1";
           const label = String(i + 1).padStart(2, "0");
-
-          const span = isPatternLarge
-            ? "md:col-span-8 md:row-span-2"
-            : isPatternMedium
-              ? "md:col-span-4 md:row-span-2"
-              : "md:col-span-4 md:row-span-2";
-
           const caption = language === "en" && g.captionEn ? g.captionEn : g.caption;
           const projectTitle = language === "en" && project.titleEn ? project.titleEn : project.title;
 
@@ -139,14 +186,14 @@ export function ProjectGallery({ project }: { project: Project }) {
               key={`${g.caption}-${i}`}
               type="button"
               onClick={() => open(i)}
-              className={`group relative block w-full overflow-hidden bg-muted text-left outline outline-offset-[-1px] outline-border ${span}`}
-              aria-label={`${caption}`}
+              className={`group relative block h-full w-full overflow-hidden bg-muted text-left outline outline-offset-[-1px] outline-border rounded-lg shadow-sm ${spanClass}`}
+              aria-label={caption}
             >
               <Image
                 src={g.src}
                 alt={`${projectTitle} — ${caption}`}
                 fill
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes={isLandscape ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
                 className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
               />
 
@@ -168,7 +215,7 @@ export function ProjectGallery({ project }: { project: Project }) {
 
       {active !== null && (
         <Lightbox
-          images={filteredGallery}
+          images={arrangedGallery}
           projectTitle={language === "en" && project.titleEn ? project.titleEn : project.title}
           active={active}
           getRoomLabel={getRoomLabel}
@@ -180,6 +227,8 @@ export function ProjectGallery({ project }: { project: Project }) {
     </section>
   );
 }
+
+const customMagnifierCursor = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'%3E%3Ccircle cx='10' cy='10' r='6.5' fill='none' stroke='black' stroke-width='3.2'/%3E%3Cline x1='15' y1='15' x2='21' y2='21' stroke='black' stroke-width='3.8' stroke-linecap='round'/%3E%3Ccircle cx='10' cy='10' r='6.5' fill='rgba(0,0,0,0.15)' stroke='white' stroke-width='1.8'/%3E%3Cline x1='15' y1='15' x2='21' y2='21' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 10 10, zoom-in`;
 
 function Lightbox({
   images,
@@ -201,6 +250,8 @@ function Lightbox({
   const image = images[active]!;
   const closeRef = useRef<HTMLButtonElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
 
   // Preload next and prev images for 0ms instant transition
   const total = images.length;
@@ -217,7 +268,26 @@ function Lightbox({
 
   useEffect(() => {
     setIsLoaded(false);
+    setIsZoomed(false);
+    setZoomPos({ x: 50, y: 50 });
   }, [active]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
+    const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
+    setZoomPos({ x, y });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length > 0 && e.touches[0]) {
+      const touch = e.touches[0];
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = Math.max(0, Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100));
+      const y = Math.max(0, Math.min(100, ((touch.clientY - rect.top) / rect.height) * 100));
+      setZoomPos({ x, y });
+    }
+  };
 
   const label = `${String(active + 1).padStart(2, "0")} / ${String(images.length).padStart(2, "0")}`;
 
@@ -277,9 +347,18 @@ function Lightbox({
         className="mx-4 max-h-[92dvh] max-w-[94vw] md:mx-12"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative flex items-center justify-center min-h-[40dvh] md:min-h-[50dvh]">
+        <div
+          className="relative flex items-center justify-center min-h-[40dvh] md:min-h-[50dvh] overflow-hidden rounded-xl border border-white/10 shadow-2xl"
+          style={{ cursor: customMagnifierCursor }}
+          onMouseEnter={() => setIsZoomed(true)}
+          onMouseLeave={() => setIsZoomed(false)}
+          onMouseMove={handleMouseMove}
+          onTouchStart={() => setIsZoomed(true)}
+          onTouchEnd={() => setIsZoomed(false)}
+          onTouchMove={handleTouchMove}
+        >
           {!isLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center z-10">
               <div className="h-8 w-8 animate-spin rounded-full border-2 border-white/30 border-t-white" />
             </div>
           )}
@@ -291,9 +370,15 @@ function Lightbox({
             height={1800}
             sizes="94vw"
             priority
-            quality={80}
+            quality={90}
             onLoad={() => setIsLoaded(true)}
-            className={`h-auto w-auto max-h-[82dvh] max-w-full rounded-xl border border-white/10 shadow-2xl transition-opacity duration-200 ${
+            style={{
+              transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
+              transform: isZoomed ? "scale(2.3)" : "scale(1)",
+              transition: isZoomed ? "transform 0.08s ease-out" : "transform 0.3s ease-out, opacity 0.2s",
+              cursor: customMagnifierCursor,
+            }}
+            className={`h-auto w-auto max-h-[82dvh] max-w-full rounded-xl ${
               isLoaded ? "opacity-100" : "opacity-0"
             }`}
           />
