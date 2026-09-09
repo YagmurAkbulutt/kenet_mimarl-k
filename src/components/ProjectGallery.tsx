@@ -16,6 +16,9 @@ const roomTranslations: Record<string, { tr: string; en: string }> = {
   Balkon: { tr: "Balkon", en: "Balcony" },
   "Yemek Alanı": { tr: "Yemek Alanı", en: "Dining Area" },
   Banyo: { tr: "Banyo", en: "Bathroom" },
+  Teras: { tr: "Teras", en: "Terrace" },
+  Showroom: { tr: "Showroom", en: "Showroom" },
+  Ofis: { tr: "Ofis", en: "Office" },
 };
 
 function arrangeGalleryItems(items: GalleryItem[]): GalleryItem[] {

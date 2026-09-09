@@ -173,11 +173,11 @@ export const projects: Project[] = [
     summary: "Zarif renk paleti, fonksiyonel oda kurguları ve nitelikli ahşap-mermer dokularıyla tasarlanan modern konut projesi.",
     summaryEn: "A modern residential project designed with an elegant color palette, functional room configurations, and refined wood-marble textures.",
     description: [
-      "G-H Evi; salon, yemek alanı, mutfak, oturma odası ve koridor dâhil tüm yaşam alanlarının birbiriyle entegre bir mimari dille kurgulandığı özel bir konut projesidir.",
+      "G-H Evi; salon, yemek alanı, mutfak, teras ve koridor dâhil tüm yaşam alanlarının birbiriyle entegre bir mimari dille kurgulandığı özel bir konut projesidir.",
       "Mekânda tercih edilen pastel tonlar, gizli aydınlatmalar ve özel imalat ahşap detaylar, hem estetik hem de yüksek konforlu bir yaşam alanı sunmaktadır.",
     ],
     descriptionEn: [
-      "G-H House is a tailored residential project where all living environments—including living room, dining area, kitchen, lounge, and hallways—are arranged in an integrated architectural dialogue.",
+      "G-H House is a tailored residential project where all living environments—including living room, dining area, kitchen, terrace, and hallways—are arranged in an integrated architectural dialogue.",
       "Pastel tones, concealed lighting features, and bespoke woodwork elevate the spatial quality, delivering both aesthetic sophistication and high living comfort.",
     ],
     gallery: [
@@ -188,18 +188,18 @@ export const projects: Project[] = [
       { src: "/g-h/salon/image00006.webp", caption: "Salon Dinlenme Alanı", captionEn: "Living Room Seating Corner", room: "Salon", aspectRatio: "portrait" },
       { src: "/g-h/salon/image00007.webp", caption: "Salon Gün Işığı Açısı", captionEn: "Living Room Daylight Angle", room: "Salon", aspectRatio: "portrait" },
 
-      // Oturma Odası (11)
-      { src: "/g-h/oturma_odasi/22.webp", caption: "Oturma Odası Ana Görünüm", captionEn: "Main Lounge View", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/24.webp", caption: "Oturma Grubu ve Aydınlatma Detayı", captionEn: "Lounge Seating & Lighting Detail", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/25.webp", caption: "TV Ünitesi ve Raf Kurgusu", captionEn: "TV Unit & Shelving Layout", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/26.webp", caption: "Oturma Odası Genel Perspektifi", captionEn: "Lounge Overall Perspective", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/27.webp", caption: "Koltuk ve Sehpa Detayı", captionEn: "Sofa & Coffee Table Detail", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/28.webp", caption: "Doku ve Malzeme Detayı", captionEn: "Texture & Material Detail", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/29.webp", caption: "Pencere Önü Dinlenme Alanı", captionEn: "Window Side Lounge Nook", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/33.webp", caption: "Oturma Odası Köşe Açısı", captionEn: "Lounge Corner Angle", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/34.webp", caption: "Geniş Oturma Odası Açısı", captionEn: "Wide Lounge Angle", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/37.webp", caption: "Oturma Odası Gün Işığı Bakışı", captionEn: "Lounge Daylight View", room: "Oturma Odası", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/42.webp", caption: "Oturma Odası Detay Görünümü", captionEn: "Lounge Detail View", room: "Oturma Odası", aspectRatio: "portrait" },
+      // Teras (11)
+      { src: "/g-h/oturma_odasi/22.webp", caption: "Teras Ana Görünüm", captionEn: "Main Terrace View", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/24.webp", caption: "Oturma Grubu ve Aydınlatma Detayı", captionEn: "Terrace Seating & Lighting Detail", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/25.webp", caption: "TV Ünitesi ve Raf Kurgusu", captionEn: "TV Unit & Shelving Layout", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/26.webp", caption: "Teras Genel Perspektifi", captionEn: "Terrace Overall Perspective", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/27.webp", caption: "Koltuk ve Sehpa Detayı", captionEn: "Sofa & Coffee Table Detail", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/28.webp", caption: "Doku ve Malzeme Detayı", captionEn: "Texture & Material Detail", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/29.webp", caption: "Pencere Önü Dinlenme Alanı", captionEn: "Window Side Terrace Nook", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/33.webp", caption: "Teras Köşe Açısı", captionEn: "Terrace Corner Angle", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/34.webp", caption: "Geniş Teras Açısı", captionEn: "Wide Terrace Angle", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/37.webp", caption: "Teras Gün Işığı Bakışı", captionEn: "Terrace Daylight View", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/oturma_odasi/42.webp", caption: "Teras Detay Görünümü", captionEn: "Terrace Detail View", room: "Teras", aspectRatio: "portrait" },
 
       // Yemek Alanı (4)
       { src: "/g-h/yemek_alani/38.webp", caption: "Yemek Masası ve Sandalyeler", captionEn: "Dining Table & Chairs", room: "Yemek Alanı", aspectRatio: "portrait" },
@@ -338,6 +338,92 @@ export const projects: Project[] = [
       { src: "/i-s/koridor/image00029.webp", caption: "Koridor Zemin Dokusu", captionEn: "Corridor Flooring Texture", room: "Koridor", aspectRatio: "portrait" },
       { src: "/i-s/koridor/image00031.webp", caption: "Koridor Tavan Işıklandırma Detayı", captionEn: "Corridor Ceiling Light Detail", room: "Koridor", aspectRatio: "portrait" },
       { src: "/i-s/koridor/image00034.webp", caption: "Koridor Derinlik Açısı", captionEn: "Corridor Perspective View", room: "Koridor", aspectRatio: "portrait" },
+    ],
+  },
+  {
+    slug: "glddoor",
+    title: "GLDOOR Showroom & Ofis",
+    titleEn: "GLDOOR Showroom & Office",
+    category: "Ticari & Ofis",
+    categoryEn: "Commercial & Office",
+    location: "Bandırma, Balıkesir",
+    locationEn: "Bandırma, Balıkesir",
+    area: "250 m²",
+    client: "GLDOOR",
+    clientEn: "GLDOOR",
+    status: "Tamamlandı",
+    statusEn: "Completed",
+    cover: "/glddoor/7.webp",
+    summary: "GLDOOR markası için tasarlanan; ürün sergileme modülleri, malzeme numune panoları ve yönetim alanını bir arada sunan modern showroom projesi.",
+    summaryEn: "A modern showroom and management office project designed for GLDOOR, integrating custom material display modules, sample walls, and executive workspace.",
+    description: [
+      "GLDOOR Showroom & Ofis projesi; ahşap paneller, kapak numuneleri, süpürgelik modülleri ve kapı tipolojilerinin sergilendiği nitelikli bir ticari iç mekân tasarımıdır.",
+      "Yönetim ofisi bölümünde yer alan özel logo duvarı, şık çalışma masası kurgusu ve aydınlatma detayları ile kurumsal kimlik mekânın genel atmosferine entegre edilmiştir.",
+    ],
+    descriptionEn: [
+      "GLDOOR Showroom & Office is a refined commercial interior project dedicated to displaying wood panels, cabinet doors, skirting modules, and door typologies.",
+      "In the executive office section, a bespoke feature logo wall, executive desk arrangement, and tailored lighting integrate the corporate identity seamlessly into the overall atmosphere.",
+    ],
+    gallery: [
+      // Showroom (8)
+      { src: "/glddoor/7.webp", caption: "Showroom Kapsamlı Perspektif", captionEn: "Comprehensive Showroom View", room: "Showroom", aspectRatio: "landscape" },
+      { src: "/glddoor/1.webp", caption: "MDFLAM & Suntalam Sergileme Alanı", captionEn: "MDFLAM & Suntalam Display Area", room: "Showroom", aspectRatio: "landscape" },
+      { src: "/glddoor/2.webp", caption: "Showroom Genel Malzeme Duvarı", captionEn: "Showroom Material Wall View", room: "Showroom", aspectRatio: "landscape" },
+      { src: "/glddoor/3.webp", caption: "Ahşap & Taş Doku Numuneleri", captionEn: "Wood & Stone Texture Samples", room: "Showroom", aspectRatio: "portrait" },
+      { src: "/glddoor/4.webp", caption: "HG Kapak & Panel Sergileme Ünitesi", captionEn: "High-Gloss Panel Display Unit", room: "Showroom", aspectRatio: "portrait" },
+      { src: "/glddoor/5.webp", caption: "Parke & Süpürgelik Modülü", captionEn: "Parquet & Skirting Module", room: "Showroom", aspectRatio: "landscape" },
+      { src: "/glddoor/6.webp", caption: "Ahşap Kapı & Süpürgelik Detayı", captionEn: "Wooden Door & Skirting Detail", room: "Showroom", aspectRatio: "portrait" },
+      { src: "/glddoor/9.webp", caption: "Parke & Süpürgelik Tipolojileri", captionEn: "Parquet & Skirting Types", room: "Showroom", aspectRatio: "landscape" },
+
+      // Ofis (2)
+      { src: "/glddoor/8.webp", caption: "GLDOOR Yönetim Ofisi & Karşılama Alanı", captionEn: "GLDOOR Executive Office & Reception", room: "Ofis", aspectRatio: "portrait" },
+      { src: "/glddoor/10.webp", caption: "GLDOOR Logo & Ahşap Panel Duvarı", captionEn: "GLDOOR Feature Logo Wall", room: "Ofis", aspectRatio: "portrait" },
+    ],
+  },
+  {
+    slug: "y-h-evi",
+    title: "Y-H Evi",
+    titleEn: "Y-H House",
+    category: "Konut İç Mekân",
+    categoryEn: "Residential Interior",
+    location: "Bandırma, Balıkesir",
+    locationEn: "Bandırma, Balıkesir",
+    area: "260 m²",
+    client: "Özel",
+    clientEn: "Private",
+    status: "Tamamlandı",
+    statusEn: "Completed",
+    cover: "/y-h/oturma_odasi/image00004.webp",
+    summary: "Mermer dokulu duvar panelleri, pastel gri-krem tonları ve özel imalat oluklu gardırop detaylarıyla tasarlanan modern konut projesi.",
+    summaryEn: "A modern residential project designed with marble-textured wall panels, soft grey-cream tones, and custom fluted wardrobe details.",
+    description: [
+      "Y-H Evi; salon, mutfak ve yatak odası alanlarının rafine malzeme tercihleri ve özgün mobilya detaylarıyla kurgulandığı özel bir konut projesidir.",
+      "Mekânda tercih edilen mermer yüzeyler, çıtalı duvar kaplamaları ve özel tasarım oluklu kapak kurguları, konutun çağdaş atmosferini güçlendirmektedir.",
+    ],
+    descriptionEn: [
+      "Y-H House is a tailored residential project where living room, kitchen, and bedroom environments are defined by refined material choices and custom joinery details.",
+      "Marble-textured wall claddings, slatted wall features, and custom fluted wardrobe doors enhance the contemporary spatial elegance throughout the residence.",
+    ],
+    gallery: [
+      // Oturma Odası (10)
+      { src: "/y-h/oturma_odasi/image00001.webp", caption: "TV Ünitesi ve Mermer Kaplama Duvar", captionEn: "TV Unit & Marble Wall Panel", room: "Oturma Odası", aspectRatio: "landscape" },
+      { src: "/y-h/oturma_odasi/image00003.webp", caption: "TV Ünitesi Odak Görünümü", captionEn: "TV Unit Focal View", room: "Oturma Odası", aspectRatio: "portrait" },
+      { src: "/y-h/oturma_odasi/image00004.webp", caption: "Dekoratif Duvar Çıtası ve Aksesuar", captionEn: "Decorative Wall Slat & Decor", room: "Oturma Odası", aspectRatio: "portrait" },
+      { src: "/y-h/oturma_odasi/image00005.webp", caption: "Salon Geniş Açı Bakışı", captionEn: "Wide Living Room View", room: "Oturma Odası", aspectRatio: "landscape" },
+      { src: "/y-h/oturma_odasi/image00013.webp", caption: "Salon Yemek ve Oturma Alanı", captionEn: "Living & Dining Seating View", room: "Oturma Odası", aspectRatio: "portrait" },
+      { src: "/y-h/oturma_odasi/image00016.webp", caption: "Salon Köşe Detayı", captionEn: "Living Room Corner Detail", room: "Oturma Odası", aspectRatio: "portrait" },
+      { src: "/y-h/oturma_odasi/image00017.webp", caption: "Salon Genel Perspektifi", captionEn: "Living Room General Perspective", room: "Oturma Odası", aspectRatio: "portrait" },
+
+      // Mutfak (6)
+      { src: "/y-h/mutfak/image00006.webp", caption: "Mutfak Dolapları ve Buzdolabı Modülü", captionEn: "Kitchen Cabinets & Fridge Module", room: "Mutfak", aspectRatio: "portrait" },
+      { src: "/y-h/mutfak/image00007.webp", caption: "Tezgah Üstü ve Aydınlatma Detayı", captionEn: "Countertop & Lighting Detail", room: "Mutfak", aspectRatio: "portrait" },
+      { src: "/y-h/mutfak/image00008.webp", caption: "Mutfak Evye ve Çalışma Alanı", captionEn: "Kitchen Sink & Worktop", room: "Mutfak", aspectRatio: "portrait" },
+      { src: "/y-h/mutfak/image00009.webp", caption: "Ankastre ve Dolap Kurgusu", captionEn: "Built-in Appliances & Cabinetry", room: "Mutfak", aspectRatio: "portrait" },
+      { src: "/y-h/mutfak/image00011.webp", caption: "Geniş Mutfak Perspektifi", captionEn: "Wide Kitchen View", room: "Mutfak", aspectRatio: "landscape" },
+      { src: "/y-h/mutfak/image00012.webp", caption: "Mutfak Yemek Köşesi", captionEn: "Kitchen Dining Nook", room: "Mutfak", aspectRatio: "portrait" },
+
+      // Yatak Odası (2)
+      { src: "/y-h/gardrop/image00018.webp", caption: "Özel İmalat Oluklu Gardırop Tasarımı", captionEn: "Custom Fluted Wardrobe Design", room: "Yatak Odası", aspectRatio: "portrait" },
     ],
   },
 ];

@@ -85,6 +85,9 @@ export const translations = {
     room_yatak_odasi: "Yatak Odası",
     room_koridor: "Koridor",
     room_balkon: "Balkon",
+    room_teras: "Teras",
+    room_showroom: "Showroom",
+    room_ofis: "Ofis",
 
     // Studio Page
     studio_eyebrow: "Stüdyo",
@@ -208,6 +211,9 @@ export const translations = {
     room_yatak_odasi: "Bedroom",
     room_koridor: "Hallway",
     room_balkon: "Balcony",
+    room_teras: "Terrace",
+    room_showroom: "Showroom",
+    room_ofis: "Office",
 
     // Studio Page
     studio_eyebrow: "Studio",
