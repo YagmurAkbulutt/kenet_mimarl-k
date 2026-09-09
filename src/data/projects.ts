@@ -169,7 +169,7 @@ export const projects: Project[] = [
     clientEn: "Private",
     status: "Tamamlandı",
     statusEn: "Completed",
-    cover: "/g-h/oturma_odasi/22.webp",
+    cover: "/g-h/teras/22.webp",
     summary: "Zarif renk paleti, fonksiyonel oda kurguları ve nitelikli ahşap-mermer dokularıyla tasarlanan modern konut projesi.",
     summaryEn: "A modern residential project designed with an elegant color palette, functional room configurations, and refined wood-marble textures.",
     description: [
@@ -189,17 +189,17 @@ export const projects: Project[] = [
       { src: "/g-h/salon/image00007.webp", caption: "Salon Gün Işığı Açısı", captionEn: "Living Room Daylight Angle", room: "Salon", aspectRatio: "portrait" },
 
       // Teras (11)
-      { src: "/g-h/oturma_odasi/22.webp", caption: "Teras Ana Görünüm", captionEn: "Main Terrace View", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/24.webp", caption: "Oturma Grubu ve Aydınlatma Detayı", captionEn: "Terrace Seating & Lighting Detail", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/25.webp", caption: "TV Ünitesi ve Raf Kurgusu", captionEn: "TV Unit & Shelving Layout", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/26.webp", caption: "Teras Genel Perspektifi", captionEn: "Terrace Overall Perspective", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/27.webp", caption: "Koltuk ve Sehpa Detayı", captionEn: "Sofa & Coffee Table Detail", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/28.webp", caption: "Doku ve Malzeme Detayı", captionEn: "Texture & Material Detail", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/29.webp", caption: "Pencere Önü Dinlenme Alanı", captionEn: "Window Side Terrace Nook", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/33.webp", caption: "Teras Köşe Açısı", captionEn: "Terrace Corner Angle", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/34.webp", caption: "Geniş Teras Açısı", captionEn: "Wide Terrace Angle", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/37.webp", caption: "Teras Gün Işığı Bakışı", captionEn: "Terrace Daylight View", room: "Teras", aspectRatio: "portrait" },
-      { src: "/g-h/oturma_odasi/42.webp", caption: "Teras Detay Görünümü", captionEn: "Terrace Detail View", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/22.webp", caption: "Teras Ana Görünüm", captionEn: "Main Terrace View", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/24.webp", caption: "Oturma Grubu ve Aydınlatma Detayı", captionEn: "Terrace Seating & Lighting Detail", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/25.webp", caption: "TV Ünitesi ve Raf Kurgusu", captionEn: "TV Unit & Shelving Layout", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/26.webp", caption: "Teras Genel Perspektifi", captionEn: "Terrace Overall Perspective", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/27.webp", caption: "Koltuk ve Sehpa Detayı", captionEn: "Sofa & Coffee Table Detail", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/28.webp", caption: "Doku ve Malzeme Detayı", captionEn: "Texture & Material Detail", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/29.webp", caption: "Pencere Önü Dinlenme Alanı", captionEn: "Window Side Terrace Nook", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/33.webp", caption: "Teras Köşe Açısı", captionEn: "Terrace Corner Angle", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/34.webp", caption: "Geniş Teras Açısı", captionEn: "Wide Terrace Angle", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/37.webp", caption: "Teras Gün Işığı Bakışı", captionEn: "Terrace Daylight View", room: "Teras", aspectRatio: "portrait" },
+      { src: "/g-h/teras/42.webp", caption: "Teras Detay Görünümü", captionEn: "Terrace Detail View", room: "Teras", aspectRatio: "portrait" },
 
       // Yemek Alanı (4)
       { src: "/g-h/yemek_alani/38.webp", caption: "Yemek Masası ve Sandalyeler", captionEn: "Dining Table & Chairs", room: "Yemek Alanı", aspectRatio: "portrait" },
