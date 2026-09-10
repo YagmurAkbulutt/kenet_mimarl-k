@@ -342,26 +342,26 @@ export const projects: Project[] = [
   },
   {
     slug: "glddoor",
-    title: "GLDOOR Showroom & Ofis",
-    titleEn: "GLDOOR Showroom & Office",
+    title: "GLDDOOR Showroom & Ofis",
+    titleEn: "GLDDOOR Showroom & Office",
     category: "Ticari & Ofis",
     categoryEn: "Commercial & Office",
     location: "Bandırma, Balıkesir",
     locationEn: "Bandırma, Balıkesir",
     area: "250 m²",
-    client: "GLDOOR",
-    clientEn: "GLDOOR",
+    client: "GLDDOOR",
+    clientEn: "GLDDOOR",
     status: "Tamamlandı",
     statusEn: "Completed",
     cover: "/glddoor/7.webp",
-    summary: "GLDOOR markası için tasarlanan; ürün sergileme modülleri, malzeme numune panoları ve yönetim alanını bir arada sunan modern showroom projesi.",
-    summaryEn: "A modern showroom and management office project designed for GLDOOR, integrating custom material display modules, sample walls, and executive workspace.",
+    summary: "GLDDOOR markası için tasarlanan; ürün sergileme modülleri, malzeme numune panoları ve yönetim alanını bir arada sunan modern showroom projesi.",
+    summaryEn: "A modern showroom and management office project designed for GLDDOOR, integrating custom material display modules, sample walls, and executive workspace.",
     description: [
-      "GLDOOR Showroom & Ofis projesi; ahşap paneller, kapak numuneleri, süpürgelik modülleri ve kapı tipolojilerinin sergilendiği nitelikli bir ticari iç mekân tasarımıdır.",
+      "GLDDOOR Showroom & Ofis projesi; ahşap paneller, kapak numuneleri, süpürgelik modülleri ve kapı tipolojilerinin sergilendiği nitelikli bir ticari iç mekân tasarımıdır.",
       "Yönetim ofisi bölümünde yer alan özel logo duvarı, şık çalışma masası kurgusu ve aydınlatma detayları ile kurumsal kimlik mekânın genel atmosferine entegre edilmiştir.",
     ],
     descriptionEn: [
-      "GLDOOR Showroom & Office is a refined commercial interior project dedicated to displaying wood panels, cabinet doors, skirting modules, and door typologies.",
+      "GLDDOOR Showroom & Office is a refined commercial interior project dedicated to displaying wood panels, cabinet doors, skirting modules, and door typologies.",
       "In the executive office section, a bespoke feature logo wall, executive desk arrangement, and tailored lighting integrate the corporate identity seamlessly into the overall atmosphere.",
     ],
     gallery: [
@@ -376,8 +376,8 @@ export const projects: Project[] = [
       { src: "/glddoor/9.webp", caption: "Parke & Süpürgelik Tipolojileri", captionEn: "Parquet & Skirting Types", room: "Showroom", aspectRatio: "landscape" },
 
       // Ofis (2)
-      { src: "/glddoor/8.webp", caption: "GLDOOR Yönetim Ofisi & Karşılama Alanı", captionEn: "GLDOOR Executive Office & Reception", room: "Ofis", aspectRatio: "portrait" },
-      { src: "/glddoor/10.webp", caption: "GLDOOR Logo & Ahşap Panel Duvarı", captionEn: "GLDOOR Feature Logo Wall", room: "Ofis", aspectRatio: "portrait" },
+      { src: "/glddoor/8.webp", caption: "GLDDOOR Yönetim Ofisi & Karşılama Alanı", captionEn: "GLDDOOR Executive Office & Reception", room: "Ofis", aspectRatio: "portrait" },
+      { src: "/glddoor/10.webp", caption: "GLDDOOR Logo & Ahşap Panel Duvarı", captionEn: "GLDDOOR Feature Logo Wall", room: "Ofis", aspectRatio: "portrait" },
     ],
   },
   {
