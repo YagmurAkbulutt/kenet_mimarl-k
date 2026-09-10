@@ -12,14 +12,14 @@ const heroPanels = [
     key: "left",
     title: "Ruhsat Projesi",
     href: "/hizmetler",
-    image: "/ruhsat_proje.jpeg",
+    image: "/ruhsat_proje.webp",
     alt: "Ruhsat projesi için teknik çizim ve mimari proje çalışma alanı",
   },
   {
     key: "right",
     title: "Tasarım Uygulama",
     href: "/hizmetler",
-    image: "/hero_tasarim_uygulama.jpeg",
+    image: "/hero_tasarim_uygulama.webp",
     alt: "Tasarım uygulama sürecini temsil eden tamamlanmış iç mekân",
   },
 ] as const;
