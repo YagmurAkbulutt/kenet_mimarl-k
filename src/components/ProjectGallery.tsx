@@ -255,6 +255,7 @@ function Lightbox({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
+  const [canHoverZoom, setCanHoverZoom] = useState(false);
 
   // Preload next and prev images for 0ms instant transition
   const total = images.length;
@@ -275,21 +276,21 @@ function Lightbox({
     setZoomPos({ x: 50, y: 50 });
   }, [active]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const updateHoverSupport = () => setCanHoverZoom(mediaQuery.matches);
+
+    updateHoverSupport();
+    mediaQuery.addEventListener("change", updateHoverSupport);
+    return () => mediaQuery.removeEventListener("change", updateHoverSupport);
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!canHoverZoom) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
     const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
     setZoomPos({ x, y });
-  };
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches.length > 0 && e.touches[0]) {
-      const touch = e.touches[0];
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = Math.max(0, Math.min(100, ((touch.clientX - rect.left) / rect.width) * 100));
-      const y = Math.max(0, Math.min(100, ((touch.clientY - rect.top) / rect.height) * 100));
-      setZoomPos({ x, y });
-    }
   };
 
   const label = `${String(active + 1).padStart(2, "0")} / ${String(images.length).padStart(2, "0")}`;
@@ -352,13 +353,10 @@ function Lightbox({
       >
         <div
           className="relative flex items-center justify-center min-h-[40dvh] md:min-h-[50dvh] overflow-hidden rounded-xl border border-white/10 shadow-2xl"
-          style={{ cursor: customMagnifierCursor }}
-          onMouseEnter={() => setIsZoomed(true)}
-          onMouseLeave={() => setIsZoomed(false)}
+          style={{ cursor: canHoverZoom ? customMagnifierCursor : "default" }}
+          onMouseEnter={() => canHoverZoom && setIsZoomed(true)}
+          onMouseLeave={() => canHoverZoom && setIsZoomed(false)}
           onMouseMove={handleMouseMove}
-          onTouchStart={() => setIsZoomed(true)}
-          onTouchEnd={() => setIsZoomed(false)}
-          onTouchMove={handleTouchMove}
         >
           {!isLoaded && (
             <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -379,7 +377,7 @@ function Lightbox({
               transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
               transform: isZoomed ? "scale(2.3)" : "scale(1)",
               transition: isZoomed ? "transform 0.08s ease-out" : "transform 0.3s ease-out, opacity 0.2s",
-              cursor: customMagnifierCursor,
+              cursor: canHoverZoom ? customMagnifierCursor : "default",
             }}
             className={`h-auto w-auto max-h-[82dvh] max-w-full rounded-xl ${
               isLoaded ? "opacity-100" : "opacity-0"
