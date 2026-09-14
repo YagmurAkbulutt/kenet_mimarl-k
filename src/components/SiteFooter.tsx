@@ -40,7 +40,7 @@ export function SiteFooter() {
               <Link href={getLink("/projeler")} className="hover:opacity-60">
                 {t("nav_projects")}
               </Link>
-              <Link href={getLink("/studyo")} className="hover:opacity-60">
+              <Link href={getLink("/hakkimizda")} className="hover:opacity-60">
                 {t("nav_about")}
               </Link>
               <Link href={getLink("/hizmetler")} className="hover:opacity-60">

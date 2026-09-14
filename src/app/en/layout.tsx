@@ -6,17 +6,20 @@ export const metadata: Metadata = {
     default: "KENET | Architecture & Interior Design Studio",
     template: "%s | KENET",
   },
-  description: "A contemporary architecture & interior design practice crafting timeless spaces.",
+  description:
+    "KENET is an architecture and interior design studio in Bandırma, creating thoughtful spaces from concept through implementation.",
   openGraph: {
     title: "KENET | Architecture & Interior Design Studio",
-    description: "A contemporary architecture & interior design practice crafting timeless spaces.",
+    description:
+      "KENET is an architecture and interior design studio in Bandırma, creating thoughtful spaces from concept through implementation.",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "KENET | Architecture & Interior Design Studio",
-    description: "A contemporary architecture & interior design practice crafting timeless spaces.",
+    description:
+      "KENET is an architecture and interior design studio in Bandırma, creating thoughtful spaces from concept through implementation.",
   },
 };
 

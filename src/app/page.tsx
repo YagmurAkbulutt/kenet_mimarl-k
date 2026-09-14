@@ -23,7 +23,7 @@ export default function HomePage() {
             {t("home_approach_text")}
           </h2>
           <Link
-            href={getLink("/studyo")}
+            href={getLink("/hakkimizda")}
             className="inline-flex min-h-11 w-fit items-center gap-3 border-b border-foreground pb-1 eyebrow transition-opacity hover:opacity-60"
           >
             {t("home_about_link")} <ArrowRight className="h-4 w-4" />

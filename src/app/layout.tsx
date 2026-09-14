@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { StructuredData } from "@/components/StructuredData";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -10,23 +13,32 @@ import "../styles.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://kenetmimarlik.com"),
   title: {
-    default: "KENET | Architecture & Interior Design Studio",
+    default: "KENET Mimarlık | Mimari Tasarım ve İç Mimarlık",
     template: "%s",
   },
-  description: "Bütüncül mimari tasarım, iç mekan kurgusu ve uygulama pratiği.",
+  description:
+    "Kenet Mimarlık; Bandırma ve çevresinde mimari tasarım, ruhsat projesi, iç mimarlık ve uygulama hizmetleri sunan bir tasarım stüdyosudur.",
   authors: [{ name: "Kenet Mimarlık" }],
   icons: {
-    icon: "/favicon.png",
+    icon: [{ url: "/favicon.png", type: "image/png" }],
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
   openGraph: {
-    title: "KENET | Architecture & Interior Design Studio",
-    description: "Bütüncül mimari tasarım, iç mekan kurgusu ve uygulama pratiği.",
+    title: "KENET Mimarlık | Mimari Tasarım ve İç Mimarlık",
+    description:
+      "Kenet Mimarlık; Bandırma ve çevresinde mimari tasarım, ruhsat projesi, iç mimarlık ve uygulama hizmetleri sunan bir tasarım stüdyosudur.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
+    title: "KENET Mimarlık | Mimari Tasarım ve İç Mimarlık",
+    description:
+      "Kenet Mimarlık; Bandırma ve çevresinde mimari tasarım, ruhsat projesi, iç mimarlık ve uygulama hizmetleri sunan bir tasarım stüdyosudur.",
+  },
+  alternates: {
+    canonical: "/",
+    languages: { "tr-TR": "/", "en-US": "/en" },
   },
 };
 
@@ -61,6 +73,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           <SiteFooter />
           <WhatsAppButton />
           <Toaster />
+          <Analytics />
+          <SpeedInsights />
+          <StructuredData />
         </LanguageProvider>
       </body>
     </html>

@@ -16,7 +16,7 @@ export function SiteHeader() {
   const nav = [
     { to: "/", label: t("nav_home") },
     { to: "/projeler", label: t("nav_projects") },
-    { to: "/studyo", label: t("nav_about") },
+    { to: "/hakkimizda", label: t("nav_about") },
     { to: "/hizmetler", label: t("nav_services") },
     { to: "/iletisim", label: t("nav_contact") },
   ] as const;
