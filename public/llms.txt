@@ -6,12 +6,12 @@ Kenet Mimarlık provides architectural design, permit project preparation, inter
 
 ## Official pages
 
-- [Ana Sayfa](https://kenetmimarlik.com/): Kenet Mimarlık overview and selected work.
-- [Hakkımızda](https://kenetmimarlik.com/hakkimizda): Studio, founders, and design approach.
-- [Hizmetler](https://kenetmimarlik.com/hizmetler): Permit projects, architectural design, interior architecture, visualization, and implementation.
-- [Projeler](https://kenetmimarlik.com/projeler): Selected residential and commercial projects.
-- [İletişim](https://kenetmimarlik.com/iletisim): Bandırma office address and contact details.
-- [English site](https://kenetmimarlik.com/en): English version of the official website.
+- [Ana Sayfa](https://www.kenetmimarlik.com/): Kenet Mimarlık overview and selected work.
+- [Hakkımızda](https://www.kenetmimarlik.com/hakkimizda): Studio, founders, and design approach.
+- [Hizmetler](https://www.kenetmimarlik.com/hizmetler): Permit projects, architectural design, interior architecture, visualization, and implementation.
+- [Projeler](https://www.kenetmimarlik.com/projeler): Selected residential and commercial projects.
+- [İletişim](https://www.kenetmimarlik.com/iletisim): Bandırma office address and contact details.
+- [English site](https://www.kenetmimarlik.com/en): English version of the official website.
 
 ## Business details
 

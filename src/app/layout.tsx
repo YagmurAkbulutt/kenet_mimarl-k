@@ -11,7 +11,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import "../styles.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kenetmimarlik.com"),
+  metadataBase: new URL("https://www.kenetmimarlik.com"),
   title: {
     default: "KENET Mimarlık | Mimari Tasarım ve İç Mimarlık",
     template: "%s",
@@ -20,14 +20,21 @@ export const metadata: Metadata = {
     "Kenet Mimarlık; Bandırma ve çevresinde mimari tasarım, ruhsat projesi, iç mimarlık ve uygulama hizmetleri sunan bir tasarım stüdyosudur.",
   authors: [{ name: "Kenet Mimarlık" }],
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "KENET Mimarlık | Mimari Tasarım ve İç Mimarlık",
     description:
       "Kenet Mimarlık; Bandırma ve çevresinde mimari tasarım, ruhsat projesi, iç mimarlık ve uygulama hizmetleri sunan bir tasarım stüdyosudur.",
+    url: "https://www.kenetmimarlik.com",
+    siteName: "Kenet Mimarlık",
+    locale: "tr_TR",
     type: "website",
   },
   twitter: {

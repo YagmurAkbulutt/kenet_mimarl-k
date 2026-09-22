@@ -1,4 +1,4 @@
-const siteUrl = "https://kenetmimarlik.com";
+const siteUrl = "https://www.kenetmimarlik.com";
 
 export function StructuredData() {
   const data = {

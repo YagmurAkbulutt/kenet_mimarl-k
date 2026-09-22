@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://kenetmimarlik.com/sitemap.xml
+Sitemap: https://www.kenetmimarlik.com/sitemap.xml
